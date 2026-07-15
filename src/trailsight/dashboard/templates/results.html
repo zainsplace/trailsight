@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block header_extra %}
+  <span class="summary">
+    {{ summary.total }} findings
+    {% for sev, count in summary.by_severity.items() %}
+      <span class="pill {{ sev }}">{{ count }} {{ sev }}</span>
+    {% endfor %}
+  </span>
+{% endblock %}
+{% block content %}
+  {% if not findings %}
+    <p class="clean">No findings. The trail looks clean.</p>
+  {% else %}
+    <div class="filter">
+      <button data-filter="all">All</button>
+      <button data-filter="critical">Critical</button>
+      <button data-filter="high">High</button>
+      <button data-filter="medium">Medium</button>
+      <button data-filter="low">Low</button>
+    </div>
+    <ul class="findings">
+      {% for finding in findings %}
+        <li class="finding {{ finding.severity }}" data-severity="{{ finding.severity }}">
+          <span class="sev-tag">{{ finding.severity }}</span>
+          <h2>{{ finding.title }}</h2>
+          <p class="meta">{{ finding.rule }} · {{ finding.identity }}</p>
+          <p class="desc">{{ finding.description }}</p>
+          <details>
+            <summary>Show evidence</summary>
+            <table>
+              <tr><th>Time</th><th>Event</th><th>Source IP</th><th>Region</th></tr>
+              {% for event in finding.events %}
+                <tr>
+                  <td>{{ event.time.isoformat() }}</td>
+                  <td>{{ event.name }}</td>
+                  <td>{{ event.source_ip }}</td>
+                  <td>{{ event.region }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </details>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <a class="back" href="{{ url_for('index') }}">Scan another file</a>
+{% endblock %}
