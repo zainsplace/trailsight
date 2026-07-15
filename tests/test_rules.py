@@ -4,6 +4,7 @@ from trailsight.rules import RULES, run_rules
 from trailsight.events import Event
 from trailsight.rules.leaked_credentials import detect as leaked_detect
 from trailsight.rules.privilege_escalation import detect as privesc_detect
+from trailsight.rules.recon import detect as recon_detect
 
 
 def _event(name, arn="arn:aws:iam::111:user/x", **kw):
@@ -61,3 +62,19 @@ def test_privesc_silent_on_readonly_attach():
         "policyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess",
         "userName": "bob"})]
     assert privesc_detect(events) == []
+
+
+def test_recon_fires_on_enumeration_burst():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [_event("DescribeInstances", time=t + timedelta(minutes=i))
+              for i in range(20)]
+    findings = recon_detect(events)
+    assert len(findings) == 1
+    assert findings[0].rule == "recon"
+
+
+def test_recon_silent_on_light_activity():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [_event("DescribeInstances", time=t + timedelta(minutes=i))
+              for i in range(3)]
+    assert recon_detect(events) == []
