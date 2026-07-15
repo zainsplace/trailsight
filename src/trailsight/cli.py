@@ -43,11 +43,25 @@ def main(argv=None):
     scanner.add_argument("--input", required=True)
     scanner.add_argument("--format", choices=["json", "text"], default="text")
 
+    server = sub.add_parser("serve", help="Run the local web dashboard")
+    server.add_argument("--host", default="127.0.0.1")
+    server.add_argument("--port", type=int, default=5000)
+
     args = parser.parse_args(argv)
 
     if args.command == "generate":
         write_dataset(args.output)
         print(f"Wrote synthetic dataset to {args.output}")
+        return 0
+
+    if args.command == "serve":
+        try:
+            from trailsight.dashboard import create_app
+        except ImportError:
+            print("The dashboard needs Flask. Install it with: "
+                  "pip install trailsight[dashboard]")
+            return 1
+        create_app().run(host=args.host, port=args.port)
         return 0
 
     findings = scan(args.input)

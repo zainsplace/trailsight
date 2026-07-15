@@ -57,3 +57,18 @@ def test_demo_shows_findings(client):
     response = client.get("/demo")
     assert response.status_code == 200
     assert b"privilege_escalation" in response.data
+
+
+def test_serve_runs_app_on_chosen_port(monkeypatch):
+    from trailsight import cli
+
+    captured = {}
+
+    class FakeApp:
+        def run(self, host, port):
+            captured["host"] = host
+            captured["port"] = port
+
+    monkeypatch.setattr("trailsight.dashboard.create_app", lambda: FakeApp())
+    assert cli.main(["serve", "--port", "8080"]) == 0
+    assert captured == {"host": "127.0.0.1", "port": 8080}
