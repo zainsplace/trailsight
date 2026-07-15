@@ -50,6 +50,17 @@ A scan exits with status 1 when it finds something and 0 when the trail is
 clean, so it can gate a script or CI job. If the `trailsight` command is not on
 your PATH, use `python -m trailsight.cli` in its place.
 
+### Dashboard
+
+For a visual view, install the optional dashboard and run the local server:
+
+    python -m pip install -e ".[dashboard]"
+    trailsight serve
+
+Then open http://127.0.0.1:5000, upload a CloudTrail file or click "Load demo
+data", and read the findings as severity-coloured cards. The server runs on your
+machine only; nothing is uploaded anywhere.
+
 ## Design
 
 The detection pipeline and its principles are documented in
