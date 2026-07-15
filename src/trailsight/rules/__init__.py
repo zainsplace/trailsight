@@ -14,3 +14,4 @@ def run_rules(events):
 
 
 from trailsight.rules import leaked_credentials as _leaked_credentials  # noqa: E402,F401
+from trailsight.rules import privilege_escalation as _privilege_escalation  # noqa: E402,F401

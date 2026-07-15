@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 from trailsight.rules import RULES, run_rules
 from trailsight.events import Event
 from trailsight.rules.leaked_credentials import detect as leaked_detect
+from trailsight.rules.privilege_escalation import detect as privesc_detect
 
 
 def _event(name, arn="arn:aws:iam::111:user/x", **kw):
@@ -44,3 +45,19 @@ def test_leaked_credentials_silent_on_single_ip():
                time=t + timedelta(minutes=3)),
     ]
     assert leaked_detect(events) == []
+
+
+def test_privesc_fires_on_admin_attach():
+    events = [_event("AttachUserPolicy", request_parameters={
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess",
+        "userName": "bob"})]
+    findings = privesc_detect(events)
+    assert len(findings) == 1
+    assert findings[0].severity == "critical"
+
+
+def test_privesc_silent_on_readonly_attach():
+    events = [_event("AttachUserPolicy", request_parameters={
+        "policyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+        "userName": "bob"})]
+    assert privesc_detect(events) == []
