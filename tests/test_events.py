@@ -40,3 +40,17 @@ def test_load_events_accepts_bare_list(tmp_path):
     path.write_text('[{"eventName": "ListBuckets", "eventTime": "2026-01-02T00:00:00Z"}]')
     events = load_events(str(path))
     assert events[0].name == "ListBuckets"
+
+
+def test_events_from_records_matches_loading():
+    from trailsight.events import events_from_records
+
+    records = [{
+        "eventTime": "2026-01-02T03:04:05Z",
+        "eventName": "StopLogging",
+        "userIdentity": {"type": "IAMUser", "arn": "arn:aws:iam::111:user/bob"},
+    }]
+    events = events_from_records(records)
+    assert len(events) == 1
+    assert events[0].name == "StopLogging"
+    assert events[0].identity_arn == "arn:aws:iam::111:user/bob"

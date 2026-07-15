@@ -44,8 +44,12 @@ def event_from_record(record):
     )
 
 
+def events_from_records(records):
+    return [event_from_record(record) for record in records]
+
+
 def load_events(path):
     with open(path, "r", encoding="utf-8") as handle:
         data = json.load(handle)
     records = data["Records"] if isinstance(data, dict) else data
-    return [event_from_record(record) for record in records]
+    return events_from_records(records)
