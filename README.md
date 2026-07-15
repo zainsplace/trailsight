@@ -2,14 +2,15 @@
 
 Self-hostable, explainable threat detection for AWS CloudTrail.
 
-> Status: early development. The detection engine is being built in the open,
-> one piece at a time. See the roadmap below for what works today and what is
-> coming next.
+> Status: early development. The detection engine and command line interface
+> work today. Anomaly detection, reading logs straight from AWS, and a dashboard
+> are on the roadmap below.
 
 TrailSight reads AWS CloudTrail activity and flags identity and API level
-attacks that commonly hit small AWS accounts. Every finding will come with the
-evidence that triggered it, and can optionally be explained in plain English by
-a language model of your choice, including a local one.
+attacks that commonly hit small AWS accounts. Every finding comes with the
+evidence that triggered it and a plain-English summary of why it matters. An
+optional language-model layer that writes fuller explanations, including with a
+local model, is on the roadmap.
 
 It is free, runs entirely on your own machine, and does not send your logs
 anywhere unless you explicitly turn on explanations.
@@ -21,7 +22,7 @@ TrailSight is for the solo developer or small team that wants to understand what
 is happening in their AWS account without paying for an enterprise platform or
 handing their logs to a vendor.
 
-## What it will detect
+## What it detects
 
 - Leaked credentials: one access key used from multiple locations in a short time
 - Privilege escalation: an administrator policy attached to a principal
@@ -29,6 +30,25 @@ handing their logs to a vendor.
 - Disabled security controls: CloudTrail or GuardDuty turned off
 - Root account activity
 - Console logins without MFA
+
+## Usage
+
+Requires Python 3.12 or newer. Install once from a clone:
+
+    python -m pip install -e .
+
+Generate a synthetic dataset with planted attacks, then scan it:
+
+    trailsight generate --output demo.json
+    trailsight scan --input demo.json
+
+Scan a real CloudTrail export and get JSON output:
+
+    trailsight scan --input your-cloudtrail.json --format json
+
+A scan exits with status 1 when it finds something and 0 when the trail is
+clean, so it can gate a script or CI job. If the `trailsight` command is not on
+your PATH, use `python -m trailsight.cli` in its place.
 
 ## Design
 
@@ -40,8 +60,9 @@ threat, so the tool is trustworthy with explanations switched off.
 
 ## Roadmap
 
-- **v0.1** (in progress) — CloudTrail loader, synthetic attack dataset, the core
-  detection rules, optional explanations, and a command line interface
+- **v0.1** — CloudTrail loader, synthetic attack dataset, the six core detection
+  rules, and a command line interface (done); an optional language-model
+  explanation layer (next)
 - **v0.2** — per-identity anomaly detection for novel behaviour
 - **v0.3** — reading CloudTrail directly from S3 and CloudWatch
 - **v0.4** — a self-hosted dashboard for continuous monitoring
