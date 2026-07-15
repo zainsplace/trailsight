@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <form class="upload" method="post" action="{{ url_for('scan') }}"
+        enctype="multipart/form-data">
+    <label class="dropzone">
+      Drop a CloudTrail JSON file here or click to browse
+      <input type="file" name="logfile" accept=".json,application/json">
+    </label>
+    <button type="submit">Scan</button>
+  </form>
+  <a class="demo" href="{{ url_for('demo') }}">Load demo data</a>
+{% endblock %}

@@ -9,6 +9,9 @@ description = "Self-hostable, explainable threat detection for AWS CloudTrail"
 requires-python = ">=3.12"
 license = {text = "MIT"}
 
+[project.optional-dependencies]
+dashboard = ["flask>=3"]
+
 [project.scripts]
 trailsight = "trailsight.cli:main"
 
@@ -17,3 +20,6 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"trailsight.dashboard" = ["templates/*.html", "static/*"]
