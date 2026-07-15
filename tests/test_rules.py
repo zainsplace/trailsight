@@ -6,6 +6,7 @@ from trailsight.rules.leaked_credentials import detect as leaked_detect
 from trailsight.rules.privilege_escalation import detect as privesc_detect
 from trailsight.rules.recon import detect as recon_detect
 from trailsight.rules.security_controls import detect as controls_detect
+from trailsight.rules.root_usage import detect as root_detect
 
 
 def _event(name, arn="arn:aws:iam::111:user/x", **kw):
@@ -89,3 +90,14 @@ def test_controls_fires_on_stop_logging():
 
 def test_controls_silent_on_normal_event():
     assert controls_detect([_event("GetObject")]) == []
+
+
+def test_root_usage_fires_for_root_identity():
+    findings = root_detect([_event("CreateAccessKey", identity_type="Root",
+                                   arn="arn:aws:iam::111:root")])
+    assert len(findings) == 1
+    assert findings[0].rule == "root_usage"
+
+
+def test_root_usage_silent_for_iam_user():
+    assert root_detect([_event("CreateAccessKey", identity_type="IAMUser")]) == []
