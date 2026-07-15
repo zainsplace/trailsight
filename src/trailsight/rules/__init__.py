@@ -18,3 +18,4 @@ from trailsight.rules import privilege_escalation as _privilege_escalation  # no
 from trailsight.rules import recon as _recon  # noqa: E402,F401
 from trailsight.rules import security_controls as _security_controls  # noqa: E402,F401
 from trailsight.rules import root_usage as _root_usage  # noqa: E402,F401
+from trailsight.rules import console_mfa as _console_mfa  # noqa: E402,F401

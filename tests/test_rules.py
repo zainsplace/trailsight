@@ -7,6 +7,7 @@ from trailsight.rules.privilege_escalation import detect as privesc_detect
 from trailsight.rules.recon import detect as recon_detect
 from trailsight.rules.security_controls import detect as controls_detect
 from trailsight.rules.root_usage import detect as root_detect
+from trailsight.rules.console_mfa import detect as mfa_detect
 
 
 def _event(name, arn="arn:aws:iam::111:user/x", **kw):
@@ -101,3 +102,13 @@ def test_root_usage_fires_for_root_identity():
 
 def test_root_usage_silent_for_iam_user():
     assert root_detect([_event("CreateAccessKey", identity_type="IAMUser")]) == []
+
+
+def test_mfa_fires_when_login_without_mfa():
+    findings = mfa_detect([_event("ConsoleLogin", mfa_used=False)])
+    assert len(findings) == 1
+    assert findings[0].rule == "console_mfa"
+
+
+def test_mfa_silent_when_mfa_used():
+    assert mfa_detect([_event("ConsoleLogin", mfa_used=True)]) == []
