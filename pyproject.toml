@@ -7,6 +7,7 @@ name = "trailsight"
 version = "0.1.0"
 description = "Self-hostable, explainable threat detection for AWS CloudTrail"
 requires-python = ">=3.12"
+license = {text = "MIT"}
 
 [project.scripts]
 trailsight = "trailsight.cli:main"
