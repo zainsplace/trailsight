@@ -5,6 +5,7 @@ from trailsight.events import Event
 from trailsight.rules.leaked_credentials import detect as leaked_detect
 from trailsight.rules.privilege_escalation import detect as privesc_detect
 from trailsight.rules.recon import detect as recon_detect
+from trailsight.rules.security_controls import detect as controls_detect
 
 
 def _event(name, arn="arn:aws:iam::111:user/x", **kw):
@@ -78,3 +79,13 @@ def test_recon_silent_on_light_activity():
     events = [_event("DescribeInstances", time=t + timedelta(minutes=i))
               for i in range(3)]
     assert recon_detect(events) == []
+
+
+def test_controls_fires_on_stop_logging():
+    findings = controls_detect([_event("StopLogging")])
+    assert len(findings) == 1
+    assert findings[0].severity == "critical"
+
+
+def test_controls_silent_on_normal_event():
+    assert controls_detect([_event("GetObject")]) == []
