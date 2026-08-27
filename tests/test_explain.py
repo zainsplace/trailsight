@@ -1,7 +1,14 @@
 from datetime import datetime, timezone
 
+import pytest
+
 from trailsight.events import Event
-from trailsight.explain import build_prompt
+from trailsight.explain import (
+    ExplanationError,
+    build_prompt,
+    explain_all,
+    explain_finding,
+)
 from trailsight.findings import Finding
 
 
@@ -55,3 +62,43 @@ def test_build_prompt_forbids_inventing_facts():
     prompt = build_prompt(_finding())
     assert "only" in prompt.lower()
     assert "do not invent" in prompt.lower()
+
+
+class FakeProvider:
+    def __init__(self, text="Explanation text."):
+        self.prompts = []
+        self.text = text
+
+    def complete(self, prompt):
+        self.prompts.append(prompt)
+        return self.text
+
+
+class FailingProvider:
+    def complete(self, prompt):
+        raise ExplanationError("ollama is not running")
+
+
+def test_explain_finding_calls_the_provider_once_with_the_prompt():
+    provider = FakeProvider()
+    text = explain_finding(_finding(), provider)
+    assert text == "Explanation text."
+    assert len(provider.prompts) == 1
+    assert "StopLogging" in provider.prompts[0]
+
+
+def test_explain_all_attaches_explanations():
+    findings = [_finding(), _finding()]
+    explained = explain_all(findings, FakeProvider())
+    assert [f.explanation for f in explained] == ["Explanation text."] * 2
+
+
+def test_explain_all_leaves_the_originals_untouched():
+    findings = [_finding()]
+    explain_all(findings, FakeProvider())
+    assert findings[0].explanation is None
+
+
+def test_explain_all_propagates_provider_failure():
+    with pytest.raises(ExplanationError):
+        explain_all([_finding()], FailingProvider())

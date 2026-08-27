@@ -1,3 +1,5 @@
+from dataclasses import replace
+
 INSTRUCTION = (
     "You are a security analyst. Explain the finding below using ONLY the "
     "evidence provided. Do not invent facts, names, or events that are not "
@@ -30,3 +32,16 @@ def build_prompt(finding):
     ]
     lines.extend(_event_line(event) for event in finding.events)
     return INSTRUCTION + "\n".join(lines)
+
+
+class ExplanationError(Exception):
+    pass
+
+
+def explain_finding(finding, provider):
+    return provider.complete(build_prompt(finding))
+
+
+def explain_all(findings, provider):
+    return [replace(finding, explanation=explain_finding(finding, provider))
+            for finding in findings]
