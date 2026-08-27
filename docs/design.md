@@ -160,10 +160,12 @@ increment.
 
 - **v0.1** — Loader (local JSON), synthetic generator, rule engine with the core
   detectors, optional explanation layer behind a flag, CLI output (JSON and
-  readable text), tests, and a README stating the full vision.
+  readable text), tests, and a README stating the full vision. Shipped, along
+  with the dashboard, which arrived earlier than planned.
 - **v0.2** — Baseline/anomaly engine.
 - **v0.3** — Real CloudTrail sources (S3, CloudWatch).
-- **v0.4** — Self-hosted dashboard (Docker) with continuous ingestion.
+- **v0.4** — Continuous ingestion and a Docker deployment for the dashboard,
+  which today scans one file at a time.
 
 ## v0.1 scope
 

@@ -2,18 +2,19 @@
 
 Self-hostable, explainable threat detection for AWS CloudTrail.
 
-> Status: early development. The detection engine and command line interface
-> work today. Anomaly detection, reading logs straight from AWS, and a dashboard
-> are on the roadmap below.
+> Status: early development. The detection engine, the command line interface,
+> the explanation layer, and the dashboard work today. Anomaly detection and
+> reading logs straight from AWS are on the roadmap below.
 
 TrailSight reads AWS CloudTrail activity and flags identity and API level
 attacks that commonly hit small AWS accounts. Every finding comes with the
 evidence that triggered it and a plain-English summary of why it matters. An
-optional language-model layer that writes fuller explanations, including with a
-local model, is on the roadmap.
+optional language-model layer writes fuller explanations, and it can run against
+a local model.
 
-It is free, runs entirely on your own machine, and does not send your logs
-anywhere unless you explicitly turn on explanations.
+It is free and runs entirely on your own machine. Detection is fully offline.
+Explanations are optional, off by default, and with a local model through Ollama
+they are offline too, so your logs never leave your machine at all.
 
 ## Why
 
@@ -61,6 +62,32 @@ Then open http://127.0.0.1:5000, upload a CloudTrail file or click "Load demo
 data", and read the findings as severity-coloured cards. The server runs on your
 machine only; nothing is uploaded anywhere.
 
+### Explanations
+
+Every finding already ships with the evidence that triggered it and a
+plain-English summary. Explanations add a fuller account written by a language
+model: what happened, why it is suspicious, and how to respond.
+
+The model never decides what is a threat. It is only ever given a finding the
+rules have already made, along with that finding's evidence, and asked to
+explain it. Turn explanations off and the findings are unchanged.
+
+Explanations are off by default and need a local model. Install
+[Ollama](https://ollama.com), pull a model, then pass `--explain`:
+
+    ollama pull llama3
+    trailsight scan --input demo.json --explain
+
+Point it at a different model or host if you need to:
+
+    trailsight scan --input demo.json --explain --ollama-model mistral
+    trailsight scan --input demo.json --explain --ollama-host http://localhost:11434
+
+Nothing leaves your machine: the prompt goes to Ollama on localhost. In the
+dashboard, each finding has an Explain button that does the same thing for that
+one finding. If Ollama is not running, findings are still reported in full and
+only the explanation is missing.
+
 ## Design
 
 The detection pipeline and its principles are documented in
@@ -72,11 +99,12 @@ threat, so the tool is trustworthy with explanations switched off.
 ## Roadmap
 
 - **v0.1** — CloudTrail loader, synthetic attack dataset, the six core detection
-  rules, and a command line interface (done); an optional language-model
-  explanation layer (next)
+  rules, a command line interface, and an optional language-model explanation
+  layer (done)
 - **v0.2** — per-identity anomaly detection for novel behaviour
 - **v0.3** — reading CloudTrail directly from S3 and CloudWatch
-- **v0.4** — a self-hosted dashboard for continuous monitoring
+- **v0.4** — continuous monitoring in the dashboard, which currently scans a file
+  at a time (the dashboard itself shipped early, in v0.1)
 
 ## Development
 
