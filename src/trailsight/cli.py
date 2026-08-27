@@ -55,6 +55,8 @@ def main(argv=None):
     server = sub.add_parser("serve", help="Run the local web dashboard")
     server.add_argument("--host", default="127.0.0.1")
     server.add_argument("--port", type=int, default=5000)
+    server.add_argument("--ollama-model", default="llama3")
+    server.add_argument("--ollama-host", default="http://localhost:11434")
 
     args = parser.parse_args(argv)
 
@@ -70,7 +72,9 @@ def main(argv=None):
             print("The dashboard needs Flask. Install it with: "
                   "pip install trailsight[dashboard]")
             return 1
-        create_app().run(host=args.host, port=args.port)
+        create_app(ollama_model=args.ollama_model,
+                   ollama_host=args.ollama_host).run(host=args.host,
+                                                     port=args.port)
         return 0
 
     findings = scan(args.input)

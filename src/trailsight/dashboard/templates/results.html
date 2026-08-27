@@ -18,13 +18,15 @@
       <button data-filter="medium">Medium</button>
       <button data-filter="low">Low</button>
     </div>
-    <ul class="findings">
+    <ul class="findings" data-scan-id="{{ scan_id }}">
       {% for finding in findings %}
         <li class="finding {{ finding.severity }}" data-severity="{{ finding.severity }}">
           <span class="sev-tag">{{ finding.severity }}</span>
           <h2>{{ finding.title }}</h2>
           <p class="meta">{{ finding.rule }} · {{ finding.identity }}</p>
           <p class="desc">{{ finding.description }}</p>
+          <button class="explain" data-index="{{ loop.index0 }}">Explain</button>
+          <p class="explanation" hidden></p>
           <details>
             <summary>Show evidence</summary>
             <table>

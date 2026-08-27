@@ -1,5 +1,6 @@
 import io
 import json
+import re
 
 import pytest
 
@@ -7,6 +8,7 @@ from trailsight.generator import generate
 
 pytest.importorskip("flask")
 
+import trailsight.dashboard.app as dashboard_app
 from trailsight.dashboard import create_app
 
 
@@ -69,6 +71,59 @@ def test_serve_runs_app_on_chosen_port(monkeypatch):
             captured["host"] = host
             captured["port"] = port
 
-    monkeypatch.setattr("trailsight.dashboard.create_app", lambda: FakeApp())
+    monkeypatch.setattr("trailsight.dashboard.create_app",
+                        lambda **kwargs: FakeApp())
     assert cli.main(["serve", "--port", "8080"]) == 0
     assert captured == {"host": "127.0.0.1", "port": 8080}
+
+
+class StubProvider:
+    def __init__(self, model="llama3", host="http://localhost:11434"):
+        pass
+
+    def complete(self, prompt):
+        return "An administrator policy was attached."
+
+
+def _scan_id(body):
+    match = re.search(rb'data-scan-id="([^"]+)"', body)
+    assert match, "results page must carry a scan id"
+    return match.group(1).decode()
+
+
+def test_explain_returns_text_for_a_stored_finding(client, monkeypatch):
+    monkeypatch.setattr(dashboard_app, "OllamaProvider", StubProvider)
+    records, _ = generate()
+    scan_id = _scan_id(_upload(client, records).data)
+    response = client.post("/explain", json={"scan_id": scan_id, "index": 0})
+    assert response.status_code == 200
+    assert response.get_json()["explanation"].startswith("An administrator")
+
+
+def test_explain_rejects_an_unknown_scan(client):
+    response = client.post("/explain", json={"scan_id": "nope", "index": 0})
+    assert response.status_code == 404
+
+
+def test_explain_rejects_an_out_of_range_index(client, monkeypatch):
+    monkeypatch.setattr(dashboard_app, "OllamaProvider", StubProvider)
+    records, _ = generate()
+    scan_id = _scan_id(_upload(client, records).data)
+    response = client.post("/explain", json={"scan_id": scan_id, "index": 9999})
+    assert response.status_code == 404
+
+
+def test_explain_reports_a_dead_provider(client, monkeypatch):
+    class DeadProvider:
+        def __init__(self, model="llama3", host="http://localhost:11434"):
+            pass
+
+        def complete(self, prompt):
+            raise dashboard_app.ExplanationError("ollama is not running")
+
+    monkeypatch.setattr(dashboard_app, "OllamaProvider", DeadProvider)
+    records, _ = generate()
+    scan_id = _scan_id(_upload(client, records).data)
+    response = client.post("/explain", json={"scan_id": scan_id, "index": 0})
+    assert response.status_code == 503
+    assert "ollama is not running" in response.get_json()["error"]

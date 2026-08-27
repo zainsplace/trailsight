@@ -351,3 +351,38 @@ details td {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+button.explain {
+  background: transparent;
+  border: 1px solid #3a4358;
+  color: #cbd4e6;
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+button.explain:hover:not(:disabled) {
+  border-color: #6f7dff;
+  color: #ffffff;
+}
+
+button.explain:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.explanation {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 2px solid #6f7dff;
+  background: rgba(111, 125, 255, 0.08);
+  border-radius: 0 6px 6px 0;
+  white-space: pre-wrap;
+}
+
+.explanation.failed {
+  border-left-color: #e0685f;
+  background: rgba(224, 104, 95, 0.08);
+}
