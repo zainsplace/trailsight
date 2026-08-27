@@ -13,3 +13,4 @@ class Finding:
     identity: str
     events: list[Event]
     description: str
+    explanation: str | None = None
