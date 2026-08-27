@@ -1,3 +1,6 @@
+import json
+import urllib.error
+import urllib.request
 from dataclasses import replace
 
 INSTRUCTION = (
@@ -45,3 +48,33 @@ def explain_finding(finding, provider):
 def explain_all(findings, provider):
     return [replace(finding, explanation=explain_finding(finding, provider))
             for finding in findings]
+
+
+class OllamaProvider:
+    def __init__(self, model="llama3", host="http://localhost:11434"):
+        self.model = model
+        self.host = host.rstrip("/")
+
+    def complete(self, prompt):
+        payload = json.dumps({
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False,
+        }).encode("utf-8")
+        request = urllib.request.Request(
+            f"{self.host}/api/generate", data=payload,
+            headers={"Content-Type": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                body = json.loads(response.read().decode("utf-8"))
+        except (urllib.error.URLError, OSError) as error:
+            raise ExplanationError(
+                f"could not reach Ollama at {self.host}: {error}") from error
+        except (json.JSONDecodeError, UnicodeDecodeError) as error:
+            raise ExplanationError(
+                f"Ollama at {self.host} returned an unreadable response") from error
+        text = body.get("response", "").strip()
+        if not text:
+            raise ExplanationError(f"Ollama at {self.host} returned no text")
+        return text

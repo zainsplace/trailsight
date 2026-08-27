@@ -1,3 +1,5 @@
+import json
+import urllib.error
 from datetime import datetime, timezone
 
 import pytest
@@ -5,6 +7,7 @@ import pytest
 from trailsight.events import Event
 from trailsight.explain import (
     ExplanationError,
+    OllamaProvider,
     build_prompt,
     explain_all,
     explain_finding,
@@ -102,3 +105,51 @@ def test_explain_all_leaves_the_originals_untouched():
 def test_explain_all_propagates_provider_failure():
     with pytest.raises(ExplanationError):
         explain_all([_finding()], FailingProvider())
+
+
+class FakeResponse:
+    def __init__(self, body):
+        self._body = body
+
+    def read(self):
+        return self._body
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def test_ollama_provider_posts_the_prompt_and_returns_the_response(monkeypatch):
+    captured = {}
+
+    def fake_urlopen(request, timeout=None):
+        captured["url"] = request.full_url
+        captured["body"] = json.loads(request.data.decode("utf-8"))
+        return FakeResponse(b'{"response": "  Explained.  "}')
+
+    monkeypatch.setattr("trailsight.explain.urllib.request.urlopen", fake_urlopen)
+    provider = OllamaProvider(model="llama3", host="http://localhost:11434")
+    assert provider.complete("prompt text") == "Explained."
+    assert captured["url"] == "http://localhost:11434/api/generate"
+    assert captured["body"] == {"model": "llama3", "prompt": "prompt text",
+                                "stream": False}
+
+
+def test_ollama_provider_raises_explanation_error_when_unreachable(monkeypatch):
+    def fake_urlopen(request, timeout=None):
+        raise urllib.error.URLError("connection refused")
+
+    monkeypatch.setattr("trailsight.explain.urllib.request.urlopen", fake_urlopen)
+    with pytest.raises(ExplanationError):
+        OllamaProvider().complete("prompt text")
+
+
+def test_ollama_provider_raises_explanation_error_on_bad_body(monkeypatch):
+    def fake_urlopen(request, timeout=None):
+        return FakeResponse(b"not json")
+
+    monkeypatch.setattr("trailsight.explain.urllib.request.urlopen", fake_urlopen)
+    with pytest.raises(ExplanationError):
+        OllamaProvider().complete("prompt text")
