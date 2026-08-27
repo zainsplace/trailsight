@@ -7,3 +7,7 @@ dist/
 .pytest_cache/
 .ruff_cache/
 docs/plans/
+
+# Generated CloudTrail sample logs (see `trailsight generate`)
+demo.json
+mock_logs.json
