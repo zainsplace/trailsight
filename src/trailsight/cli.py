@@ -2,11 +2,12 @@ import argparse
 import json
 
 from trailsight.engine import scan
+from trailsight.explain import ExplanationError, OllamaProvider, explain_all
 from trailsight.generator import write_dataset
 
 
 def _finding_to_dict(finding):
-    return {
+    payload = {
         "rule": finding.rule,
         "severity": finding.severity,
         "title": finding.title,
@@ -18,6 +19,9 @@ def _finding_to_dict(finding):
             for e in finding.events
         ],
     }
+    if finding.explanation:
+        payload["explanation"] = finding.explanation
+    return payload
 
 
 def _print_text(findings):
@@ -29,6 +33,8 @@ def _print_text(findings):
         print(f"  rule: {finding.rule}")
         print(f"  identity: {finding.identity}")
         print(f"  {finding.description}")
+        if finding.explanation:
+            print(f"  explanation: {finding.explanation}")
         print()
 
 
@@ -42,6 +48,9 @@ def main(argv=None):
     scanner = sub.add_parser("scan", help="Scan a CloudTrail JSON file")
     scanner.add_argument("--input", required=True)
     scanner.add_argument("--format", choices=["json", "text"], default="text")
+    scanner.add_argument("--explain", action="store_true")
+    scanner.add_argument("--ollama-model", default="llama3")
+    scanner.add_argument("--ollama-host", default="http://localhost:11434")
 
     server = sub.add_parser("serve", help="Run the local web dashboard")
     server.add_argument("--host", default="127.0.0.1")
@@ -65,6 +74,13 @@ def main(argv=None):
         return 0
 
     findings = scan(args.input)
+
+    if args.explain and findings:
+        provider = OllamaProvider(model=args.ollama_model, host=args.ollama_host)
+        try:
+            findings = explain_all(findings, provider)
+        except ExplanationError as error:
+            print(f"Explanations unavailable: {error}\n")
 
     if args.format == "json":
         print(json.dumps([_finding_to_dict(f) for f in findings], indent=2))

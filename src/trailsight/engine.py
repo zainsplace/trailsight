@@ -2,6 +2,5 @@ from trailsight.events import load_events
 from trailsight.rules import run_rules
 
 
-def scan(path, explain=False, provider=None):
-    events = load_events(path)
-    return run_rules(events)
+def scan(path):
+    return run_rules(load_events(path))
