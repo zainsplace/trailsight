@@ -1,4 +1,5 @@
 import os
+import socket
 import sys
 from pathlib import Path
 
@@ -27,3 +28,17 @@ def running_inside(venv):
         return Path(sys.executable).resolve() == venv_python(venv).resolve()
     except OSError:
         return False
+
+
+PREFERRED_PORT = 5000
+
+
+def find_free_port(preferred=PREFERRED_PORT):
+    for candidate in (preferred, 0):
+        with socket.socket() as probe:
+            try:
+                probe.bind(("127.0.0.1", candidate))
+            except OSError:
+                continue
+            return probe.getsockname()[1]
+    raise LauncherError("TrailSight could not find a free port to run on.")
