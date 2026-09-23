@@ -1,11 +1,11 @@
-# TrailSight — Design
+# Trailsight — Design
 
 Status: draft
 Date: 2026-07-14
 
 ## Summary
 
-TrailSight is a self-hostable threat detection tool for AWS CloudTrail. It reads
+Trailsight is a self-hostable threat detection tool for AWS CloudTrail. It reads
 CloudTrail activity, detects identity and API level attacks, and explains each
 finding in plain English. It is aimed at solo developers and small teams who
 cannot justify enterprise tooling and find the built-in options opaque.
@@ -36,7 +36,7 @@ can act on, without sending their logs to a third party.
 
 ## Positioning
 
-TrailSight wins on three things the incumbents do not offer together:
+Trailsight wins on three things the incumbents do not offer together:
 
 - Free and open source.
 - Fully self-hostable. Nothing leaves the user's infrastructure.
@@ -48,7 +48,7 @@ source (CloudTrail) and one threat class (identity and API abuse) well.
 
 ## Non-goals
 
-- Not a posture or misconfiguration scanner (CSPM). TrailSight detects activity,
+- Not a posture or misconfiguration scanner (CSPM). Trailsight detects activity,
   not static configuration.
 - Not a multi-cloud tool. AWS only.
 - Not an agent-based runtime tool. It reads logs; it does not run inside
@@ -123,7 +123,7 @@ introduced after the rule engine is solid.
 
 ## Explanation layer
 
-The explanation layer is optional and constrained. It is what makes TrailSight
+The explanation layer is optional and constrained. It is what makes Trailsight
 explainable, and it is designed so that the model assists without being relied
 upon.
 
@@ -202,7 +202,7 @@ produces complete findings with explanations disabled.
 
 ## Success criteria
 
-- A solo AWS user can run TrailSight against their CloudTrail logs and get
+- A solo AWS user can run Trailsight against their CloudTrail logs and get
   findings they understand and can act on, without paying for anything or
   sending their logs elsewhere.
 - Every detector's accuracy is demonstrable against labelled data.

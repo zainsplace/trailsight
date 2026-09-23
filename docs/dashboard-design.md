@@ -1,11 +1,11 @@
-# TrailSight Dashboard — Design
+# Trailsight Dashboard — Design
 
 Status: draft
 Date: 2026-07-15
 
 ## Summary
 
-A self-hosted web dashboard for TrailSight. You run `trailsight serve`, open the
+A self-hosted web dashboard for Trailsight. You run `trailsight serve`, open the
 page in a browser, upload a CloudTrail JSON file (or load the demo dataset), and
 the findings are shown as severity-coloured cards instead of terminal text. It
 runs entirely on the user's machine and keeps the project's ethos: nothing is

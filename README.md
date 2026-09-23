@@ -1,4 +1,4 @@
-# TrailSight
+# Trailsight
 
 [![CI](https://github.com/zainsplace/trailsight/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/zainsplace/trailsight/actions/workflows/ci.yml)
 
@@ -8,7 +8,7 @@ Self-hostable, explainable threat detection for AWS CloudTrail.
 > the explanation layer, and the dashboard work today. Anomaly detection and
 > reading logs straight from AWS are on the roadmap below.
 
-TrailSight reads AWS CloudTrail activity and flags identity and API level
+Trailsight reads AWS CloudTrail activity and flags identity and API level
 attacks that commonly hit small AWS accounts. Every finding comes with the
 evidence that triggered it and a plain-English summary of why it matters. An
 optional language-model layer writes fuller explanations, and it can run against
@@ -21,7 +21,7 @@ they are offline too, so your logs never leave your machine at all.
 ## Why
 
 GuardDuty is a black box, and Wiz and Datadog are priced for companies.
-TrailSight is for the solo developer or small team that wants to understand what
+Trailsight is for the solo developer or small team that wants to understand what
 is happening in their AWS account without paying for an enterprise platform or
 handing their logs to a vendor.
 
