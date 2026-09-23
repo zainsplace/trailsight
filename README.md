@@ -1,5 +1,7 @@
 # TrailSight
 
+[![CI](https://github.com/zainsplace/trailsight/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/zainsplace/trailsight/actions/workflows/ci.yml)
+
 Self-hostable, explainable threat detection for AWS CloudTrail.
 
 > Status: early development. The detection engine, the command line interface,
