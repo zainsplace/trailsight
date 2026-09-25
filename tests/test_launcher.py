@@ -160,3 +160,97 @@ def test_serve_runs_the_dashboard_on_localhost(monkeypatch):
     monkeypatch.setattr(trailsight.dashboard, "create_app", lambda: StubApp())
     launcher.serve(4321)
     assert calls == {"host": "127.0.0.1", "port": 4321}
+
+
+def _stub_bootstrap(monkeypatch, tmp_path, steps):
+    monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
+    monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
+    monkeypatch.setattr(launcher, "check_python_version", lambda: None)
+    monkeypatch.setattr(launcher, "create_venv",
+                        lambda venv: steps.append("create"))
+    monkeypatch.setattr(launcher, "install_project",
+                        lambda python, root: steps.append("install"))
+    monkeypatch.setattr(launcher, "relaunch",
+                        lambda python, root: steps.append("relaunch") or 0)
+    monkeypatch.delenv(launcher.CHILD_MARKER, raising=False)
+
+
+def test_relaunch_marks_the_child_and_runs_the_module(monkeypatch, tmp_path):
+    captured = {}
+
+    def fake_run(command, **kwargs):
+        captured["command"] = command
+        captured["env"] = kwargs["env"]
+        captured["cwd"] = kwargs["cwd"]
+        return subprocess.CompletedProcess(command, 0)
+
+    monkeypatch.setattr(launcher.subprocess, "run", fake_run)
+    launcher.relaunch(tmp_path / "python", tmp_path)
+    assert captured["command"][0] == str(tmp_path / "python")
+    assert captured["command"][1:] == ["-m", "trailsight.launcher"]
+    assert captured["env"][launcher.CHILD_MARKER] == "1"
+    assert captured["cwd"] == str(tmp_path)
+
+
+def test_relaunch_failure_points_at_the_workspace(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        launcher.subprocess, "run",
+        lambda command, **kwargs: subprocess.CompletedProcess(command, 1))
+    with pytest.raises(launcher.LauncherError) as error:
+        launcher.relaunch(tmp_path / "python", tmp_path)
+    assert ".venv" in str(error.value)
+
+
+def test_first_run_creates_installs_then_relaunches(monkeypatch, tmp_path, capsys):
+    steps = []
+    _stub_bootstrap(monkeypatch, tmp_path, steps)
+    assert launcher.main() == 0
+    assert steps == ["create", "install", "relaunch"]
+    assert "only happens once" in capsys.readouterr().out
+
+
+def test_later_runs_skip_the_setup(monkeypatch, tmp_path, capsys):
+    python = launcher.venv_python(tmp_path / ".venv")
+    python.parent.mkdir(parents=True)
+    python.touch()
+    steps = []
+    _stub_bootstrap(monkeypatch, tmp_path, steps)
+    assert launcher.main() == 0
+    assert steps == ["relaunch"]
+    assert "only happens once" not in capsys.readouterr().out
+
+
+def test_main_serves_when_inside_the_environment(monkeypatch, tmp_path, capsys):
+    served = []
+    monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
+    monkeypatch.setattr(launcher, "running_inside", lambda venv: True)
+    monkeypatch.setattr(launcher, "find_free_port", lambda: 5000)
+    monkeypatch.setattr(launcher, "open_browser_when_ready", lambda port: None)
+    monkeypatch.setattr(launcher, "serve", served.append)
+    assert launcher.main() == 0
+    assert served == [5000]
+    assert "http://127.0.0.1:5000" in capsys.readouterr().out
+
+
+def test_errors_print_plainly_and_wait(monkeypatch, tmp_path, capsys):
+    def boom():
+        raise launcher.LauncherError("Nice clear message.")
+
+    monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
+    monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
+    monkeypatch.setattr(launcher, "check_python_version", boom)
+    monkeypatch.setattr("builtins.input", lambda prompt: "")
+    assert launcher.main() == 1
+    out = capsys.readouterr().out
+    assert "Nice clear message." in out
+    assert "Traceback" not in out
+
+
+def test_a_second_bootstrap_is_refused(monkeypatch, tmp_path, capsys):
+    monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
+    monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
+    monkeypatch.setattr(launcher, "check_python_version", lambda: None)
+    monkeypatch.setenv(launcher.CHILD_MARKER, "1")
+    monkeypatch.setattr("builtins.input", lambda prompt: "")
+    assert launcher.main() == 1
+    assert ".venv" in capsys.readouterr().out

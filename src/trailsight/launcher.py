@@ -104,3 +104,78 @@ def open_browser_when_ready(port):
 def serve(port):
     from trailsight.dashboard import create_app
     create_app().run(host="127.0.0.1", port=port)
+
+
+CHILD_MARKER = "TRAILSIGHT_LAUNCHER_CHILD"
+
+
+def relaunch(python, root):
+    environment = dict(os.environ)
+    environment[CHILD_MARKER] = "1"
+    try:
+        completed = subprocess.run([str(python), "-m", "trailsight.launcher"],
+                                   cwd=str(root), env=environment)
+    except OSError as error:
+        raise LauncherError(
+            "TrailSight could not start. Delete the .venv folder in this "
+            "folder and try again.") from error
+    if completed.returncode != 0:
+        raise LauncherError(
+            "TrailSight stopped unexpectedly. Delete the .venv folder in this "
+            "folder and try again.")
+    return completed.returncode
+
+
+def bootstrap(root, venv):
+    check_python_version()
+    if os.environ.get(CHILD_MARKER):
+        raise LauncherError(
+            "TrailSight could not start in its own workspace. Delete the "
+            ".venv folder in this folder and try again.")
+    print("TrailSight")
+    print()
+    python = venv_python(venv)
+    if not python.exists():
+        print("Setting up for first use. This takes a minute, and only "
+              "happens once.")
+        print("  Creating a private workspace...")
+        create_venv(venv)
+        print("  Installing TrailSight...")
+        install_project(python, root)
+        print()
+    return relaunch(python, root)
+
+
+def run_dashboard():
+    port = find_free_port()
+    print("Starting TrailSight...")
+    open_browser_when_ready(port)
+    print(f"Opened in your browser: http://127.0.0.1:{port}")
+    print()
+    print("Close this window when you are done.")
+    try:
+        serve(port)
+    except KeyboardInterrupt:
+        pass
+    return 0
+
+
+def main():
+    root = project_root()
+    venv = venv_dir(root)
+    try:
+        if running_inside(venv):
+            return run_dashboard()
+        return bootstrap(root, venv)
+    except LauncherError as error:
+        print()
+        print(error)
+        print()
+        input("Press Enter to close this window.")
+        return 1
+    except KeyboardInterrupt:
+        return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
