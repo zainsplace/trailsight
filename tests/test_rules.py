@@ -51,6 +51,57 @@ def test_leaked_credentials_silent_on_single_ip():
     assert leaked_detect(events) == []
 
 
+def test_leaked_credentials_still_fires_when_the_key_keeps_being_used():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="10.0.0.5", time=t),
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="203.0.113.9",
+               time=t + timedelta(minutes=3)),
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="203.0.113.9",
+               time=t + timedelta(hours=6)),
+    ]
+    assert len(leaked_detect(events)) == 1
+
+
+def test_leaked_credentials_fires_on_a_burst_after_long_normal_use():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="10.0.0.5",
+               time=t + timedelta(days=day))
+        for day in range(5)
+    ]
+    events.append(_event("GetObject", access_key_id="AKIALEAK", source_ip="203.0.113.9",
+                         time=t + timedelta(days=4, minutes=10)))
+    assert len(leaked_detect(events)) == 1
+
+
+def test_leaked_credentials_evidence_is_only_the_burst():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    burst = [
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="10.0.0.5",
+               time=t + timedelta(hours=5)),
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="203.0.113.9",
+               time=t + timedelta(hours=5, minutes=3)),
+    ]
+    events = [
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="10.0.0.5", time=t),
+        *burst,
+        _event("GetObject", access_key_id="AKIALEAK", source_ip="10.0.0.5",
+               time=t + timedelta(hours=12)),
+    ]
+    assert leaked_detect(events)[0].events == burst
+
+
+def test_leaked_credentials_silent_when_locations_are_hours_apart():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("GetObject", access_key_id="AKIATRAVEL", source_ip="10.0.0.5", time=t),
+        _event("GetObject", access_key_id="AKIATRAVEL", source_ip="203.0.113.9",
+               time=t + timedelta(hours=3)),
+    ]
+    assert leaked_detect(events) == []
+
+
 def test_privesc_fires_on_admin_attach():
     events = [_event("AttachUserPolicy", request_parameters={
         "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess",
