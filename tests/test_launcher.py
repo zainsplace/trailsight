@@ -304,3 +304,39 @@ def test_workspace_is_ready_needs_both_the_interpreter_and_the_marker(tmp_path):
 
     python.touch()
     assert launcher.workspace_is_ready(venv) is True
+
+
+SHIMS = ("start-trailsight.bat", "start-trailsight.command",
+         "start-trailsight.sh")
+
+
+def test_every_platform_has_a_shim():
+    root = launcher.project_root()
+    for name in SHIMS:
+        assert (root / name).exists()
+
+
+def test_the_working_shims_run_the_launcher():
+    root = launcher.project_root()
+    for name in ("start-trailsight.bat", "start-trailsight.sh"):
+        text = (root / name).read_text(encoding="utf-8")
+        assert "launcher.py" in text
+        assert "python.org" in text
+
+
+def test_the_macos_shim_delegates_rather_than_duplicating():
+    root = launcher.project_root()
+    text = (root / "start-trailsight.command").read_text(encoding="utf-8")
+    assert "start-trailsight.sh" in text
+    assert "launcher.py" not in text
+
+
+def test_the_unix_shims_are_executable_in_git():
+    root = launcher.project_root()
+    listing = subprocess.run(
+        ["git", "ls-files", "-s", "start-trailsight.command",
+         "start-trailsight.sh"],
+        cwd=str(root), capture_output=True, text=True)
+    if listing.returncode != 0:
+        pytest.skip("not a git checkout")
+    assert listing.stdout.count("100755") == 2
