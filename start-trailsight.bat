@@ -1,17 +1,32 @@
 @echo off
 cd /d "%~dp0"
-where py >nul 2>&1
-if %errorlevel%==0 (
+
+py -3 -c "" >nul 2>&1
+if not errorlevel 1 (
     py -3 src\trailsight\launcher.py
     goto :eof
 )
-where python >nul 2>&1
-if %errorlevel%==0 (
+
+python -c "" >nul 2>&1
+if not errorlevel 1 (
     python src\trailsight\launcher.py
     goto :eof
 )
+
+set "TRAILSIGHT_PYTHON="
+for /f "tokens=2,*" %%A in ('reg query "HKCU\Software\Python\PythonCore" /s /v ExecutablePath 2^>nul ^| findstr /i "ExecutablePath"') do set "TRAILSIGHT_PYTHON=%%B"
+if not defined TRAILSIGHT_PYTHON for /f "tokens=2,*" %%A in ('reg query "HKLM\Software\Python\PythonCore" /s /v ExecutablePath 2^>nul ^| findstr /i "ExecutablePath"') do set "TRAILSIGHT_PYTHON=%%B"
+if not defined TRAILSIGHT_PYTHON goto :missing
+
+"%TRAILSIGHT_PYTHON%" -c "" >nul 2>&1
+if errorlevel 1 goto :missing
+
+"%TRAILSIGHT_PYTHON%" src\trailsight\launcher.py
+goto :eof
+
+:missing
 echo.
-echo TrailSight needs Python, which is not installed.
+echo TrailSight could not find a working Python.
 echo Get it from https://www.python.org/downloads/ then double-click this again.
 echo.
 pause

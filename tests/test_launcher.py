@@ -340,3 +340,9 @@ def test_the_unix_shims_are_executable_in_git():
     if listing.returncode != 0:
         pytest.skip("not a git checkout")
     assert listing.stdout.count("100755") == 2
+
+
+def test_the_windows_shim_has_a_registry_fallback():
+    root = launcher.project_root()
+    text = (root / "start-trailsight.bat").read_text(encoding="utf-8")
+    assert "PythonCore" in text
