@@ -2,6 +2,9 @@ import os
 import socket
 import subprocess
 import sys
+import threading
+import time
+import webbrowser
 from pathlib import Path
 
 
@@ -76,3 +79,28 @@ def install_project(python, root):
         raise LauncherError(
             "Could not download what TrailSight needs. Check your internet "
             "connection and try again.") from error
+
+
+def wait_for_server(port, timeout=30.0):
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        with socket.socket() as probe:
+            if probe.connect_ex(("127.0.0.1", port)) == 0:
+                return True
+        time.sleep(0.1)
+    return False
+
+
+def open_browser_when_ready(port):
+    def target():
+        if wait_for_server(port):
+            webbrowser.open(f"http://127.0.0.1:{port}")
+
+    thread = threading.Thread(target=target, daemon=True)
+    thread.start()
+    return thread
+
+
+def serve(port):
+    from trailsight.dashboard import create_app
+    create_app().run(host="127.0.0.1", port=port)

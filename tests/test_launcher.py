@@ -116,3 +116,45 @@ def test_install_failure_mentions_the_connection(monkeypatch, tmp_path):
     with pytest.raises(launcher.LauncherError) as error:
         launcher.install_project(tmp_path / "python", tmp_path)
     assert "internet connection" in str(error.value)
+
+
+def test_wait_for_server_returns_true_once_the_socket_accepts():
+    with socket.socket() as server:
+        server.bind(("127.0.0.1", 0))
+        server.listen(1)
+        port = server.getsockname()[1]
+        assert launcher.wait_for_server(port, timeout=5.0) is True
+
+
+def test_wait_for_server_gives_up_when_nothing_listens():
+    with socket.socket() as probe:
+        probe.bind(("127.0.0.1", 0))
+        port = probe.getsockname()[1]
+    assert launcher.wait_for_server(port, timeout=0.3) is False
+
+
+def test_browser_opens_once_the_server_accepts(monkeypatch):
+    opened = []
+    monkeypatch.setattr(launcher.webbrowser, "open", opened.append)
+    with socket.socket() as server:
+        server.bind(("127.0.0.1", 0))
+        server.listen(1)
+        port = server.getsockname()[1]
+        launcher.open_browser_when_ready(port).join(timeout=10)
+    assert opened == [f"http://127.0.0.1:{port}"]
+
+
+def test_serve_runs_the_dashboard_on_localhost(monkeypatch):
+    pytest.importorskip("flask")
+    import trailsight.dashboard
+
+    calls = {}
+
+    class StubApp:
+        def run(self, host, port):
+            calls["host"] = host
+            calls["port"] = port
+
+    monkeypatch.setattr(trailsight.dashboard, "create_app", lambda: StubApp())
+    launcher.serve(4321)
+    assert calls == {"host": "127.0.0.1", "port": 4321}
