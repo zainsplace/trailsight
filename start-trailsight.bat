@@ -14,14 +14,18 @@ if not errorlevel 1 (
 )
 
 set "TRAILSIGHT_PYTHON="
-for /f "tokens=2,*" %%A in ('reg query "HKCU\Software\Python\PythonCore" /s /v ExecutablePath 2^>nul ^| findstr /i "ExecutablePath"') do set "TRAILSIGHT_PYTHON=%%B"
-if not defined TRAILSIGHT_PYTHON for /f "tokens=2,*" %%A in ('reg query "HKLM\Software\Python\PythonCore" /s /v ExecutablePath 2^>nul ^| findstr /i "ExecutablePath"') do set "TRAILSIGHT_PYTHON=%%B"
+for /f "tokens=2,*" %%A in ('reg query "HKCU\Software\Python\PythonCore" /s /v ExecutablePath 2^>nul ^| findstr /i "ExecutablePath"') do call :try "%%B"
+if not defined TRAILSIGHT_PYTHON for /f "tokens=2,*" %%A in ('reg query "HKLM\Software\Python\PythonCore" /s /v ExecutablePath 2^>nul ^| findstr /i "ExecutablePath"') do call :try "%%B"
 if not defined TRAILSIGHT_PYTHON goto :missing
 
-"%TRAILSIGHT_PYTHON%" -c "" >nul 2>&1
-if errorlevel 1 goto :missing
-
 "%TRAILSIGHT_PYTHON%" src\trailsight\launcher.py
+goto :eof
+
+:try
+if defined TRAILSIGHT_PYTHON goto :eof
+%1 -c "" >nul 2>&1
+if errorlevel 1 goto :eof
+set "TRAILSIGHT_PYTHON=%~1"
 goto :eof
 
 :missing
