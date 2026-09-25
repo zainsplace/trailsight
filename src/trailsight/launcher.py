@@ -29,7 +29,7 @@ def venv_python(venv):
 
 def running_inside(venv):
     try:
-        return Path(sys.executable).resolve() == venv_python(venv).resolve()
+        return Path(sys.prefix).resolve() == Path(venv).resolve()
     except OSError:
         return False
 
@@ -77,8 +77,9 @@ def install_project(python, root):
                        cwd=str(root), check=True, capture_output=True)
     except (subprocess.CalledProcessError, OSError) as error:
         raise LauncherError(
-            "Could not download what TrailSight needs. Check your internet "
-            "connection and try again.") from error
+            "Could not download or install what TrailSight needs. Check your "
+            "internet connection and that you have free disk space, then try "
+            "again.") from error
 
 
 def wait_for_server(port, timeout=30.0):
@@ -162,7 +163,8 @@ def run_dashboard():
     port = find_free_port()
     print("Starting TrailSight...")
     open_browser_when_ready(port)
-    print(f"Opened in your browser: http://127.0.0.1:{port}")
+    print(f"Opening in your browser: http://127.0.0.1:{port}")
+    print("If it does not open, type that address into your browser.")
     print()
     print("Close this window when you are done.")
     try:
@@ -172,24 +174,35 @@ def run_dashboard():
     return 0
 
 
+def _report(message):
+    print()
+    print(message)
+    print()
+    try:
+        input("Press Enter to close this window.")
+    except EOFError:
+        pass
+    return 1
+
+
 def main():
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+    except (AttributeError, OSError):
+        pass
     root = project_root()
     venv = venv_dir(root)
     try:
         if running_inside(venv):
             return run_dashboard()
         return bootstrap(root, venv)
-    except LauncherError as error:
-        print()
-        print(error)
-        print()
-        try:
-            input("Press Enter to close this window.")
-        except EOFError:
-            pass
-        return 1
     except KeyboardInterrupt:
         return 0
+    except LauncherError as error:
+        return _report(str(error))
+    except Exception:
+        return _report("TrailSight stopped unexpectedly. Delete the .venv "
+                       "folder in this folder and try again.")
 
 
 if __name__ == "__main__":

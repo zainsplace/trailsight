@@ -9,7 +9,7 @@ A double-clickable launcher that starts the TrailSight dashboard without a
 terminal. The user opens the project folder, double-clicks the file for their
 operating system, and the dashboard opens in their browser. On first run the
 launcher builds an isolated environment and installs TrailSight into it; on
-every run after that it goes straight to serving.
+every run after that it goes straight to relaunching under that environment.
 
 ## Goal
 
@@ -40,6 +40,25 @@ there is none, and hands off to `src/trailsight/launcher.py`. Every decision
 lives in the launcher module, so the three shims cannot drift apart in
 behaviour.
 
+`start-trailsight.command` delegates to `start-trailsight.sh` rather than
+duplicating its logic. Finder runs `.command` files directly, but the shell
+script already does the real work on a POSIX system, so the `.command` file's
+whole job is to `cd` into the project root and call the `.sh` file next to it.
+That leaves one place to fix if the Unix probing logic ever changes, instead of
+two copies drifting apart.
+
+`start-trailsight.bat` looks for `py -3` and `python` on the PATH first, and
+only falls back to the Windows registry (`HKCU\Software\Python\PythonCore` and
+`HKLM\Software\Python\PythonCore`) when neither works. PATH alone is not
+reliable on Windows: the official installer's "Add to PATH" checkbox is
+unticked by default, so a machine can have a perfectly good Python 3.12 or
+newer installed and registered with the OS while `py` and `python` still
+resolve to nothing, or to a different, older interpreter installed by another
+tool. The registry keys that the installer always writes are the one place a
+launcher can find every installed interpreter regardless of PATH. Each
+candidate, from either source, is routed through the same version probe so a
+too-old interpreter anywhere in the search is skipped rather than accepted.
+
 ## Two phases
 
 The launcher runs twice, under two different interpreters.
@@ -58,9 +77,22 @@ The re-run invokes the environment's interpreter as
 `.venv/bin/python -m trailsight.launcher` (`.venv\Scripts\python.exe` on
 Windows), with the project root as the working directory.
 
-Phase is decided by comparing `sys.executable` against the environment's
-interpreter path. An environment variable guards the re-run, so a failed
-comparison produces a clear message rather than an endless loop.
+Phase is decided by comparing `sys.prefix` against the environment directory,
+not by comparing interpreter paths. `python -m venv` copies the interpreter
+binary on Windows but symlinks it on macOS and Linux, so on those platforms
+`sys.executable` resolves to the same real file whether or not the environment
+is active; `sys.prefix` does not have that problem, since it points at the
+environment's own root regardless of how the interpreter file got there. An
+environment variable guards the re-run, so a failed comparison produces a
+clear message rather than an endless loop.
+
+A workspace only counts as ready once installation has actually finished. The
+launcher writes a marker file, `.venv/.trailsight-ready`, as the last step of
+bootstrap, after `install_project` succeeds. `workspace_is_ready` requires both
+the interpreter and this marker to exist. If the process is interrupted after
+`create_venv` but before the install completes, the interpreter exists but the
+marker does not, so the next launch treats the workspace as unfinished and
+rebuilds it instead of relaunching into a broken environment.
 
 The isolated environment is what makes this work on every platform. Installing
 into a system Python fails outright on current macOS and Debian derivatives,
@@ -74,12 +106,18 @@ folder.
 `src/trailsight/launcher.py`, standard library only.
 
     venv_python(venv_dir)         Scripts/python.exe on Windows, bin/python elsewhere
-    running_inside(venv_dir)      path comparison that selects the phase
+    running_inside(venv_dir)      sys.prefix comparison that selects the phase
     find_free_port(preferred)     5000 when bindable, otherwise a free port
     create_venv(venv_dir)         subprocess
     install_project(python, root) subprocess, pip install -e ".[dashboard]"
+    workspace_is_ready(venv_dir)  interpreter and readiness marker both present
+    mark_workspace_ready(venv_dir) writes the readiness marker
     wait_for_server(port)         polls the socket
     serve(port)                   imports create_app, runs the app
+    bootstrap(root, venv_dir)     phase one: create, install, mark ready, relaunch
+    relaunch(python, root)        re-runs the launcher under the environment
+    run_dashboard()               phase two: picks a port, opens the browser, serves
+    _report(message)              prints a message and waits for a keypress
     main()                        orchestration and console output
 
 One constraint governs the module: **nothing from `trailsight` is imported at
@@ -101,7 +139,8 @@ First run:
       Installing TrailSight...
 
     Starting TrailSight...
-    Opened in your browser: http://127.0.0.1:5000
+    Opening in your browser: http://127.0.0.1:5000
+    If it does not open, type that address into your browser.
 
     Close this window when you are done.
 
@@ -120,15 +159,26 @@ missing. Keeping flags out is what keeps the double-click a double-click.
 ## Error handling
 
 Failures raise a single `LauncherError` carrying a message already written for
-the reader. `main()` catches it, prints it, and waits for a keypress before
-exiting, because a console window that closes on error leaves the user with a
-black flash and no information. No stack trace reaches the user.
+the reader. `main()` catches it and passes it to `_report`, which prints it and
+waits for a keypress before exiting, because a console window that closes on
+error leaves the user with a black flash and no information. `_report` is the
+one place that prints a message and blocks on `input()`, so both the
+`LauncherError` path and the catch-all path below share it instead of
+duplicating the print-and-wait block.
+
+Anything that is not a `LauncherError` or a `KeyboardInterrupt` — a port
+grabbed between the probe and Flask's bind, an `ImportError` from a damaged
+`.venv`, or anything else unanticipated — is caught by a bare `except
+Exception` in `main()` and reported through the same `_report` function with a
+generic message. No stack trace reaches the user under any of these paths.
 
 | Condition | Message |
 |---|---|
 | Python older than 3.12 | TrailSight needs Python 3.12 or newer. You have 3.11. Install the latest from python.org, then try again. |
-| Install cannot reach the network | Could not download what TrailSight needs. Check your internet connection and try again. |
+| Install cannot reach the network or disk is full | Could not download or install what TrailSight needs. Check your internet connection and that you have free disk space, then try again. |
 | Project folder is not writable | TrailSight could not write to this folder. Move it somewhere like your Documents folder and try again. |
+| Relaunch into the environment fails | TrailSight could not start. Delete the .venv folder in this folder and try again. |
+| Relaunched process exits non-zero, or a second bootstrap is attempted, or an unanticipated exception is caught | TrailSight stopped unexpectedly. Delete the .venv folder in this folder and try again. |
 | No Python found | Reported by the shim, naming python.org. |
 
 ## Testing
@@ -139,12 +189,18 @@ install; that would make the suite slow and dependent on the network.
 - `venv_python` returns the correct path on both platform branches.
 - `find_free_port` returns 5000 when it is free, and a different bindable port
   when a socket already holds 5000.
-- `running_inside` separates the environment's interpreter from the system one.
+- `running_inside` separates the environment from the system interpreter by
+  `sys.prefix`, including the case where a stray interpreter file sits inside
+  the venv directory but `sys.prefix` says otherwise.
 - `create_venv` and `install_project` are driven with `subprocess.run` replaced,
   asserting the exact command.
 - `main()` with its collaborators replaced: a missing environment creates,
-  installs, then re-runs; a ready environment goes straight to serving.
-- Each `LauncherError` path produces its message and no traceback.
+  installs, then re-runs; a ready environment goes straight to relaunching.
+- Each `LauncherError` path, and an unanticipated exception, produce a plain
+  message and no traceback.
+- An `ast` walk of the module's top-level body asserts nothing imports from
+  `trailsight` at module scope, which is the invariant that makes first-run
+  bootstrap possible.
 
 ## Packaging
 

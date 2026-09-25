@@ -2,6 +2,7 @@ import os
 import socket
 import subprocess
 import sys
+from pathlib import Path
 
 import pytest
 
@@ -30,11 +31,17 @@ def test_running_inside_is_false_for_the_system_interpreter(tmp_path):
 
 def test_running_inside_is_true_for_the_environment_interpreter(tmp_path, monkeypatch):
     venv = tmp_path / ".venv"
+    venv.mkdir(parents=True)
+    monkeypatch.setattr(sys, "prefix", str(venv))
+    assert launcher.running_inside(venv) is True
+
+
+def test_running_inside_ignores_a_symlinked_interpreter_file(tmp_path):
+    venv = tmp_path / ".venv"
     python = launcher.venv_python(venv)
     python.parent.mkdir(parents=True)
     python.touch()
-    monkeypatch.setattr(sys, "executable", str(python))
-    assert launcher.running_inside(venv) is True
+    assert launcher.running_inside(venv) is False
 
 
 def _port_is_free(port):
@@ -262,6 +269,21 @@ def test_errors_print_plainly_and_wait(monkeypatch, tmp_path, capsys):
     assert "Traceback" not in out
 
 
+def test_an_unexpected_error_prints_plainly_instead_of_a_traceback(monkeypatch, tmp_path, capsys):
+    def boom():
+        raise ValueError("something broke")
+
+    monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
+    monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
+    monkeypatch.setattr(launcher, "check_python_version", boom)
+    monkeypatch.setattr("builtins.input", lambda prompt: "")
+    assert launcher.main() == 1
+    out = capsys.readouterr().out
+    assert "stopped unexpectedly" in out
+    assert ".venv" in out
+    assert "Traceback" not in out
+
+
 def test_a_second_bootstrap_is_refused(monkeypatch, tmp_path, capsys):
     monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
     monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
@@ -346,3 +368,16 @@ def test_the_windows_shim_has_a_registry_fallback():
     root = launcher.project_root()
     text = (root / "start-trailsight.bat").read_text(encoding="utf-8")
     assert "PythonCore" in text
+
+
+def test_the_module_imports_nothing_from_trailsight_at_module_level():
+    import ast
+
+    source = Path(launcher.__file__).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    for node in tree.body:
+        if isinstance(node, ast.Import):
+            assert not any(alias.name.split(".")[0] == "trailsight"
+                           for alias in node.names)
+        elif isinstance(node, ast.ImportFrom):
+            assert node.module is None or not node.module.split(".")[0] == "trailsight"
