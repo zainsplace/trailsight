@@ -140,7 +140,9 @@ def test_browser_opens_once_the_server_accepts(monkeypatch):
         server.bind(("127.0.0.1", 0))
         server.listen(1)
         port = server.getsockname()[1]
-        launcher.open_browser_when_ready(port).join(timeout=10)
+        thread = launcher.open_browser_when_ready(port)
+        thread.join(timeout=10)
+    assert not thread.is_alive()
     assert opened == [f"http://127.0.0.1:{port}"]
 
 
