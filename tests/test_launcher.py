@@ -1,5 +1,6 @@
 import os
 import socket
+import subprocess
 import sys
 
 import pytest
@@ -58,3 +59,60 @@ def test_find_free_port_falls_back_when_the_default_is_taken():
         chosen = launcher.find_free_port(busy)
     assert chosen != busy
     assert chosen > 0
+
+
+class RecordingRun:
+    def __init__(self, returncode=0):
+        self.calls = []
+        self.returncode = returncode
+
+    def __call__(self, command, **kwargs):
+        self.calls.append((command, kwargs))
+        if self.returncode != 0:
+            raise subprocess.CalledProcessError(self.returncode, command)
+        return subprocess.CompletedProcess(command, 0)
+
+
+def test_check_python_version_rejects_old_interpreters(monkeypatch):
+    monkeypatch.setattr(launcher.sys, "version_info", (3, 11, 0))
+    with pytest.raises(launcher.LauncherError) as error:
+        launcher.check_python_version()
+    assert "3.11" in str(error.value)
+    assert "python.org" in str(error.value)
+
+
+def test_check_python_version_accepts_the_current_interpreter():
+    assert launcher.check_python_version() is None
+
+
+def test_create_venv_runs_the_venv_module(monkeypatch, tmp_path):
+    run = RecordingRun()
+    monkeypatch.setattr(launcher.subprocess, "run", run)
+    launcher.create_venv(tmp_path / ".venv")
+    command, _ = run.calls[0]
+    assert command[:3] == [sys.executable, "-m", "venv"]
+    assert command[3] == str(tmp_path / ".venv")
+
+
+def test_create_venv_failure_suggests_another_folder(monkeypatch, tmp_path):
+    monkeypatch.setattr(launcher.subprocess, "run", RecordingRun(returncode=1))
+    with pytest.raises(launcher.LauncherError) as error:
+        launcher.create_venv(tmp_path / ".venv")
+    assert "Documents" in str(error.value)
+
+
+def test_install_project_installs_the_dashboard_extra(monkeypatch, tmp_path):
+    run = RecordingRun()
+    monkeypatch.setattr(launcher.subprocess, "run", run)
+    launcher.install_project(tmp_path / "python", tmp_path)
+    command, kwargs = run.calls[0]
+    assert command[0] == str(tmp_path / "python")
+    assert command[1:] == ["-m", "pip", "install", "-e", ".[dashboard]"]
+    assert kwargs["cwd"] == str(tmp_path)
+
+
+def test_install_failure_mentions_the_connection(monkeypatch, tmp_path):
+    monkeypatch.setattr(launcher.subprocess, "run", RecordingRun(returncode=1))
+    with pytest.raises(launcher.LauncherError) as error:
+        launcher.install_project(tmp_path / "python", tmp_path)
+    assert "internet connection" in str(error.value)
