@@ -163,11 +163,14 @@ def test_serve_runs_the_dashboard_on_localhost(monkeypatch):
 
 
 def _stub_bootstrap(monkeypatch, tmp_path, steps):
+    def fake_create_venv(venv):
+        os.makedirs(venv, exist_ok=True)
+        steps.append("create")
+
     monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
     monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
     monkeypatch.setattr(launcher, "check_python_version", lambda: None)
-    monkeypatch.setattr(launcher, "create_venv",
-                        lambda venv: steps.append("create"))
+    monkeypatch.setattr(launcher, "create_venv", fake_create_venv)
     monkeypatch.setattr(launcher, "install_project",
                         lambda python, root: steps.append("install"))
     monkeypatch.setattr(launcher, "relaunch",
@@ -210,14 +213,27 @@ def test_first_run_creates_installs_then_relaunches(monkeypatch, tmp_path, capsy
 
 
 def test_later_runs_skip_the_setup(monkeypatch, tmp_path, capsys):
+    venv = tmp_path / ".venv"
+    python = launcher.venv_python(venv)
+    python.parent.mkdir(parents=True)
+    python.touch()
+    launcher.mark_workspace_ready(venv)
+    steps = []
+    _stub_bootstrap(monkeypatch, tmp_path, steps)
+    assert launcher.main() == 0
+    assert steps == ["relaunch"]
+    assert "only happens once" not in capsys.readouterr().out
+
+
+def test_a_dead_install_causes_setup_to_run_again(monkeypatch, tmp_path, capsys):
     python = launcher.venv_python(tmp_path / ".venv")
     python.parent.mkdir(parents=True)
     python.touch()
     steps = []
     _stub_bootstrap(monkeypatch, tmp_path, steps)
     assert launcher.main() == 0
-    assert steps == ["relaunch"]
-    assert "only happens once" not in capsys.readouterr().out
+    assert steps == ["create", "install", "relaunch"]
+    assert "only happens once" in capsys.readouterr().out
 
 
 def test_main_serves_when_inside_the_environment(monkeypatch, tmp_path, capsys):
@@ -254,3 +270,37 @@ def test_a_second_bootstrap_is_refused(monkeypatch, tmp_path, capsys):
     monkeypatch.setattr("builtins.input", lambda prompt: "")
     assert launcher.main() == 1
     assert ".venv" in capsys.readouterr().out
+
+
+def test_errors_print_plainly_when_input_hits_eof(monkeypatch, tmp_path, capsys):
+    def boom():
+        raise launcher.LauncherError("Nice clear message.")
+
+    def raise_eof(prompt):
+        raise EOFError
+
+    monkeypatch.setattr(launcher, "project_root", lambda: tmp_path)
+    monkeypatch.setattr(launcher, "running_inside", lambda venv: False)
+    monkeypatch.setattr(launcher, "check_python_version", boom)
+    monkeypatch.setattr("builtins.input", raise_eof)
+    assert launcher.main() == 1
+    out = capsys.readouterr().out
+    assert "Nice clear message." in out
+    assert "Traceback" not in out
+
+
+def test_workspace_is_ready_needs_both_the_interpreter_and_the_marker(tmp_path):
+    venv = tmp_path / ".venv"
+    python = launcher.venv_python(venv)
+    assert launcher.workspace_is_ready(venv) is False
+
+    python.parent.mkdir(parents=True)
+    python.touch()
+    assert launcher.workspace_is_ready(venv) is False
+
+    python.unlink()
+    (venv / launcher.READY_MARKER).touch()
+    assert launcher.workspace_is_ready(venv) is False
+
+    python.touch()
+    assert launcher.workspace_is_ready(venv) is True

@@ -126,6 +126,17 @@ def relaunch(python, root):
     return completed.returncode
 
 
+READY_MARKER = ".trailsight-ready"
+
+
+def workspace_is_ready(venv):
+    return venv_python(venv).exists() and (Path(venv) / READY_MARKER).exists()
+
+
+def mark_workspace_ready(venv):
+    (Path(venv) / READY_MARKER).touch()
+
+
 def bootstrap(root, venv):
     check_python_version()
     if os.environ.get(CHILD_MARKER):
@@ -135,13 +146,14 @@ def bootstrap(root, venv):
     print("TrailSight")
     print()
     python = venv_python(venv)
-    if not python.exists():
+    if not workspace_is_ready(venv):
         print("Setting up for first use. This takes a minute, and only "
               "happens once.")
         print("  Creating a private workspace...")
         create_venv(venv)
         print("  Installing TrailSight...")
         install_project(python, root)
+        mark_workspace_ready(venv)
         print()
     return relaunch(python, root)
 
@@ -171,7 +183,10 @@ def main():
         print()
         print(error)
         print()
-        input("Press Enter to close this window.")
+        try:
+            input("Press Enter to close this window.")
+        except EOFError:
+            pass
         return 1
     except KeyboardInterrupt:
         return 0
