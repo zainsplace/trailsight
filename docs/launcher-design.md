@@ -152,7 +152,7 @@ install; that would make the suite slow and dependent on the network.
 `pyproject.toml`. The shims live at the project root only, which is correct:
 this path assumes someone who has the folder.
 
-`.gitignore` gains `.venv/`.
+`.gitignore` already ignores `.venv/`, so no change is needed there.
 
 The README gains a quick start section describing the double-click, placed above
 the command line usage, since it becomes the easier of the two paths.

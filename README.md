@@ -34,6 +34,22 @@ handing their logs to a vendor.
 - Root account activity
 - Console logins without MFA
 
+## Quick start
+
+No terminal needed. Install [Python](https://www.python.org/downloads/) if you
+do not have it, download this project, then double-click the file for your
+system:
+
+- Windows: `start-trailsight.bat`
+- macOS: `start-trailsight.command`
+- Linux: `start-trailsight.sh`
+
+The first launch sets itself up, which takes a minute and happens once. After
+that the dashboard opens in your browser straight away. Upload a CloudTrail file
+or click "Load demo data" to see it work. Close the window to stop it.
+
+Everything below is the command line, for people who prefer it.
+
 ## Usage
 
 Requires Python 3.12 or newer. Install once from a clone:
