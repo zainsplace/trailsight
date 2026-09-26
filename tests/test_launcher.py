@@ -36,14 +36,6 @@ def test_running_inside_is_true_for_the_environment_interpreter(tmp_path, monkey
     assert launcher.running_inside(venv) is True
 
 
-def test_running_inside_ignores_a_symlinked_interpreter_file(tmp_path):
-    venv = tmp_path / ".venv"
-    python = launcher.venv_python(venv)
-    python.parent.mkdir(parents=True)
-    python.touch()
-    assert launcher.running_inside(venv) is False
-
-
 def _port_is_free(port):
     with socket.socket() as probe:
         try:

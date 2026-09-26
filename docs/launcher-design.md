@@ -178,7 +178,8 @@ generic message. No stack trace reaches the user under any of these paths.
 | Install cannot reach the network or disk is full | Could not download or install what TrailSight needs. Check your internet connection and that you have free disk space, then try again. |
 | Project folder is not writable | TrailSight could not write to this folder. Move it somewhere like your Documents folder and try again. |
 | Relaunch into the environment fails | TrailSight could not start. Delete the .venv folder in this folder and try again. |
-| Relaunched process exits non-zero, or a second bootstrap is attempted, or an unanticipated exception is caught | TrailSight stopped unexpectedly. Delete the .venv folder in this folder and try again. |
+| Relaunched process exits non-zero, or an unanticipated exception is caught | TrailSight stopped unexpectedly. Delete the .venv folder in this folder and try again. |
+| A second bootstrap is attempted inside the environment | TrailSight could not start in its own workspace. Delete the .venv folder in this folder and try again. |
 | No Python found | Reported by the shim, naming python.org. |
 
 ## Testing
