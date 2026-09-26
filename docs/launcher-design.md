@@ -1,19 +1,19 @@
-# TrailSight Launcher — Design
+# Trailsight Launcher — Design
 
 Status: draft
 Date: 2026-09-22
 
 ## Summary
 
-A double-clickable launcher that starts the TrailSight dashboard without a
+A double-clickable launcher that starts the Trailsight dashboard without a
 terminal. The user opens the project folder, double-clicks the file for their
 operating system, and the dashboard opens in their browser. On first run the
-launcher builds an isolated environment and installs TrailSight into it; on
+launcher builds an isolated environment and installs Trailsight into it; on
 every run after that it goes straight to relaunching under that environment.
 
 ## Goal
 
-TrailSight already has a graphical interface: the dashboard shipped in v0.1.
+Trailsight already has a graphical interface: the dashboard shipped in v0.1.
 Reaching it does not:
 
     python -m pip install -e ".[dashboard]"
@@ -132,13 +132,13 @@ Windows and this is a Windows-first audience.
 
 First run:
 
-    TrailSight
+    Trailsight
 
     Setting up for first use. This takes a minute, and only happens once.
       Creating a private workspace...
-      Installing TrailSight...
+      Installing Trailsight...
 
-    Starting TrailSight...
+    Starting Trailsight...
     Opening in your browser: http://127.0.0.1:5000
     If it does not open, type that address into your browser.
 
@@ -174,12 +174,12 @@ generic message. No stack trace reaches the user under any of these paths.
 
 | Condition | Message |
 |---|---|
-| Python older than 3.12 | TrailSight needs Python 3.12 or newer. You have 3.11. Install the latest from python.org, then try again. |
-| Install cannot reach the network or disk is full | Could not download or install what TrailSight needs. Check your internet connection and that you have free disk space, then try again. |
-| Project folder is not writable | TrailSight could not write to this folder. Move it somewhere like your Documents folder and try again. |
-| Relaunch into the environment fails | TrailSight could not start. Delete the .venv folder in this folder and try again. |
-| Relaunched process exits non-zero, or an unanticipated exception is caught | TrailSight stopped unexpectedly. Delete the .venv folder in this folder and try again. |
-| A second bootstrap is attempted inside the environment | TrailSight could not start in its own workspace. Delete the .venv folder in this folder and try again. |
+| Python older than 3.12 | Trailsight needs Python 3.12 or newer. You have 3.11. Install the latest from python.org, then try again. |
+| Install cannot reach the network or disk is full | Could not download or install what Trailsight needs. Check your internet connection and that you have free disk space, then try again. |
+| Project folder is not writable | Trailsight could not write to this folder. Move it somewhere like your Documents folder and try again. |
+| Relaunch into the environment fails | Trailsight could not start. Delete the .venv folder in this folder and try again. |
+| Relaunched process exits non-zero, or an unanticipated exception is caught | Trailsight stopped unexpectedly. Delete the .venv folder in this folder and try again. |
+| A second bootstrap is attempted inside the environment | Trailsight could not start in its own workspace. Delete the .venv folder in this folder and try again. |
 | No Python found | Reported by the shim, naming python.org. |
 
 ## Testing
@@ -226,7 +226,7 @@ the command line usage, since it becomes the easier of the two paths.
 ## Success criteria
 
 - Double-clicking the file for the platform opens the dashboard in a browser
-  with no terminal use, on a machine that has never run TrailSight.
+  with no terminal use, on a machine that has never run Trailsight.
 - The second launch reaches the browser without repeating setup.
 - Every failure above prints its message in a window that stays open.
 - The command line interface and the core engine are unchanged, and still

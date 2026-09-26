@@ -45,7 +45,7 @@ def find_free_port(preferred=PREFERRED_PORT):
             except OSError:
                 continue
             return probe.getsockname()[1]
-    raise LauncherError("TrailSight could not find a free port to run on.")
+    raise LauncherError("Trailsight could not find a free port to run on.")
 
 
 MINIMUM_PYTHON = (3, 12)
@@ -56,7 +56,7 @@ def check_python_version():
         needed = f"{MINIMUM_PYTHON[0]}.{MINIMUM_PYTHON[1]}"
         current = f"{sys.version_info[0]}.{sys.version_info[1]}"
         raise LauncherError(
-            f"TrailSight needs Python {needed} or newer. You have {current}. "
+            f"Trailsight needs Python {needed} or newer. You have {current}. "
             "Install the latest from python.org, then try again.")
 
 
@@ -66,7 +66,7 @@ def create_venv(venv):
                        check=True, capture_output=True)
     except (subprocess.CalledProcessError, OSError) as error:
         raise LauncherError(
-            "TrailSight could not write to this folder. Move it somewhere "
+            "Trailsight could not write to this folder. Move it somewhere "
             "like your Documents folder and try again.") from error
 
 
@@ -77,7 +77,7 @@ def install_project(python, root):
                        cwd=str(root), check=True, capture_output=True)
     except (subprocess.CalledProcessError, OSError) as error:
         raise LauncherError(
-            "Could not download or install what TrailSight needs. Check your "
+            "Could not download or install what Trailsight needs. Check your "
             "internet connection and that you have free disk space, then try "
             "again.") from error
 
@@ -118,11 +118,11 @@ def relaunch(python, root):
                                    cwd=str(root), env=environment)
     except OSError as error:
         raise LauncherError(
-            "TrailSight could not start. Delete the .venv folder in this "
+            "Trailsight could not start. Delete the .venv folder in this "
             "folder and try again.") from error
     if completed.returncode != 0:
         raise LauncherError(
-            "TrailSight stopped unexpectedly. Delete the .venv folder in this "
+            "Trailsight stopped unexpectedly. Delete the .venv folder in this "
             "folder and try again.")
     return completed.returncode
 
@@ -142,9 +142,9 @@ def bootstrap(root, venv):
     check_python_version()
     if os.environ.get(CHILD_MARKER):
         raise LauncherError(
-            "TrailSight could not start in its own workspace. Delete the "
+            "Trailsight could not start in its own workspace. Delete the "
             ".venv folder in this folder and try again.")
-    print("TrailSight")
+    print("Trailsight")
     print()
     python = venv_python(venv)
     if not workspace_is_ready(venv):
@@ -152,7 +152,7 @@ def bootstrap(root, venv):
               "happens once.")
         print("  Creating a private workspace...")
         create_venv(venv)
-        print("  Installing TrailSight...")
+        print("  Installing Trailsight...")
         install_project(python, root)
         mark_workspace_ready(venv)
         print()
@@ -161,7 +161,7 @@ def bootstrap(root, venv):
 
 def run_dashboard():
     port = find_free_port()
-    print("Starting TrailSight...")
+    print("Starting Trailsight...")
     open_browser_when_ready(port)
     print(f"Opening in your browser: http://127.0.0.1:{port}")
     print("If it does not open, type that address into your browser.")
@@ -201,7 +201,7 @@ def main():
     except LauncherError as error:
         return _report(str(error))
     except Exception:
-        return _report("TrailSight stopped unexpectedly. Delete the .venv "
+        return _report("Trailsight stopped unexpectedly. Delete the .venv "
                        "folder in this folder and try again.")
 
 

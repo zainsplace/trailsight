@@ -20,7 +20,7 @@ goto :eof
 
 :missing
 echo.
-echo TrailSight could not find Python 3.12 or newer.
+echo Trailsight could not find Python 3.12 or newer.
 echo Get it from https://www.python.org/downloads/ then double-click this again.
 echo.
 pause
