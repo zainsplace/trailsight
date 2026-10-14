@@ -1,4 +1,4 @@
-from trailsight.findings import Finding, SEVERITIES
+from trailsight.findings import SEVERITIES, Finding, at_least, by_severity
 
 
 def test_finding_holds_evidence_and_valid_severity():
@@ -27,3 +27,32 @@ def test_finding_accepts_an_explanation():
                       description="Root account activity.",
                       explanation="The root account was used.")
     assert finding.explanation == "The root account was used."
+
+
+def _finding(severity):
+    return Finding(rule="demo", severity=severity, title="Demo",
+                   identity="arn:aws:iam::111:user/alice", events=[],
+                   description="A demo finding.")
+
+
+def test_by_severity_puts_the_most_severe_first():
+    findings = [_finding(s) for s in ("medium", "critical", "low", "high")]
+    ordered = [f.severity for f in by_severity(findings)]
+    assert ordered == ["critical", "high", "medium", "low"]
+
+
+def test_by_severity_keeps_rule_order_within_a_severity():
+    first, second = _finding("high"), _finding("high")
+    ordered = by_severity([_finding("low"), first, second])
+    assert ordered[0] is first and ordered[1] is second
+
+
+def test_at_least_drops_findings_below_the_minimum():
+    findings = [_finding(s) for s in ("low", "medium", "high", "critical")]
+    kept = [f.severity for f in at_least(findings, "high")]
+    assert kept == ["high", "critical"]
+
+
+def test_at_least_low_keeps_everything():
+    findings = [_finding(s) for s in SEVERITIES]
+    assert at_least(findings, "low") == findings

@@ -3,12 +3,10 @@ import uuid
 
 from flask import Flask, jsonify, render_template, request
 
-from trailsight.events import events_from_records
+from trailsight.engine import scan_records
 from trailsight.explain import ExplanationError, OllamaProvider, explain_finding
 from trailsight.generator import generate
-from trailsight.rules import run_rules
 
-SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 RECENT_SCANS = 8
 
 _scans = {}
@@ -22,11 +20,6 @@ def _store(findings):
     return scan_id
 
 
-def _scan_records(records):
-    findings = run_rules(events_from_records(records))
-    return sorted(findings, key=lambda f: SEVERITY_ORDER.get(f.severity, 9))
-
-
 def _summary(findings):
     counts = {}
     for finding in findings:
@@ -35,7 +28,7 @@ def _summary(findings):
 
 
 def _render_results(records):
-    findings = _scan_records(records)
+    findings = scan_records(records)
     return render_template("results.html", findings=findings,
                            summary=_summary(findings),
                            scan_id=_store(findings))
