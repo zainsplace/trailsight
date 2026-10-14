@@ -48,7 +48,7 @@ system:
 - Linux: `start-trailsight.sh`
 
 The first launch sets itself up, which takes a minute and happens once. After
-that the dashboard opens in your browser straight away. Upload a CloudTrail file
+that the dashboard opens in your browser straight away. Upload CloudTrail files
 or click "Load demo data" to see it work. Close the window to stop it.
 
 Everything below is the command line, for people who prefer it.
@@ -68,8 +68,20 @@ Scan a real CloudTrail export and get JSON output:
 
     trailsight scan --input your-cloudtrail.json --format json
 
-A scan exits with status 1 when it finds something and 0 when the trail is
-clean, so it can gate a script or CI job. If the `trailsight` command is not on
+CloudTrail delivers logs to S3 as many small `.json.gz` files. Download the
+folder and point Trailsight at it; it reads every log inside, plain or gzipped,
+and skips the digest files CloudTrail keeps alongside them:
+
+    trailsight scan --input ./cloudtrail-logs/
+
+`--input` also takes several files or folders at once. To see only what matters
+most, set a minimum severity:
+
+    trailsight scan --input ./cloudtrail-logs/ --min-severity high
+
+A scan exits with status 1 when it finds something at or above that severity, 0
+when the trail is clean, and 2 when an input cannot be read, so it can gate a
+script or CI job. If the `trailsight` command is not on
 your PATH, use `python -m trailsight.cli` in its place.
 
 ### Dashboard
@@ -79,8 +91,8 @@ For a visual view, install the optional dashboard and run the local server:
     python -m pip install -e ".[dashboard]"
     trailsight serve
 
-Then open http://127.0.0.1:5000, upload a CloudTrail file or click "Load demo
-data", and read the findings as severity-coloured cards. The server runs on your
+Then open http://127.0.0.1:5000, upload one or more CloudTrail files (`.json` or
+`.json.gz`) or click "Load demo data", and read the findings as severity-coloured cards. The server runs on your
 machine only; nothing is uploaded anywhere.
 
 ### Explanations

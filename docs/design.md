@@ -77,6 +77,17 @@ Units and their single responsibilities:
 - **Loader** reads CloudTrail events from a source (local JSON files, S3, or the
   synthetic generator) and normalizes them into one internal event model.
   Nothing downstream depends on where the logs came from.
+
+  Locally it takes any mix of files and folders. A folder is searched
+  recursively for `.json` and `.json.gz` files, which is the layout CloudTrail
+  writes to S3. Gzip is recognised by a file's first two bytes rather than its
+  name, so a renamed upload still loads. Digest files, which CloudTrail stores
+  beside the logs to prove their integrity and which hold no events, are
+  skipped during a folder walk. Records from every file are pooled before
+  detection; their order does not matter because each rule sorts its own events
+  by time. Anything unreadable raises `LoadError` with a message naming the
+  file, which the CLI prints before exiting with status 2 and the dashboard
+  shows on the page.
 - **Rule engine** runs deterministic detectors for known high-confidence
   attacks. Each rule emits a finding with the evidence that triggered it.
 - **Baseline engine** learns each identity's normal behaviour (which APIs,
@@ -171,7 +182,8 @@ increment.
 
 The first release is a genuinely working tool, not a skeleton:
 
-- Read CloudTrail events from local JSON files into the normalized model.
+- Read CloudTrail events from local JSON files, plain or gzipped, singly or by
+  folder, into the normalized model.
 - Generate synthetic data: normal activity plus labelled scenarios for leaked
   credential use, privilege escalation, reconnaissance, and disabling of
   security controls.

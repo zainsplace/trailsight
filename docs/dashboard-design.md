@@ -31,7 +31,8 @@ presentation layer on top of the existing, tested detection engine.
 
 1. Browser loads the landing page with an upload area and a "Load demo data"
    button.
-2. The user uploads a CloudTrail JSON file (or clicks demo).
+2. The user uploads one or more CloudTrail files, plain or gzipped (or clicks
+   demo).
 3. The server parses the file in memory, runs the existing detection engine, and
    renders a results page.
 4. Nothing is written to disk; the uploaded data is discarded after rendering.
@@ -44,7 +45,8 @@ serving.
 - **`dashboard/app.py`** — a Flask application factory `create_app()` with three
   routes:
   - `GET /` renders the landing/upload page.
-  - `POST /scan` reads the uploaded file, runs detection, renders results.
+  - `POST /scan` reads the uploaded files, pools their records, runs
+    detection, renders results.
   - `GET /demo` loads the synthetic dataset and renders results.
 - **`events_from_records(records)`** — a small helper added to `events.py` that
   turns already-parsed CloudTrail records into `Event` objects, reusing
@@ -83,8 +85,9 @@ structure and states, not the exact styling.
 
 ## Error handling
 
-- Uploads that are not valid JSON, or valid JSON without CloudTrail records, are
-  caught and shown as a friendly message on the page.
+- Every upload goes through `records_from_bytes`, the same parser the CLI
+  uses, so a file that is not valid gzip, not valid JSON, or JSON without
+  CloudTrail records is reported on the page by name with the same message.
 - A file size limit guards against very large uploads.
 - The server binds to localhost only.
 
