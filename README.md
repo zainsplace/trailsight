@@ -4,6 +4,9 @@
 
 Self-hostable, explainable threat detection for AWS CloudTrail.
 
+The [case study](https://zainsplace.github.io/projects/trailsight/) covers how
+the rules work, what the tests show, and what Trailsight still misses.
+
 > Status: early development. The detection engine, the command line interface,
 > the explanation layer, and the dashboard work today. Anomaly detection and
 > reading logs straight from AWS are on the roadmap below.
