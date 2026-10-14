@@ -1,3 +1,4 @@
+import gzip
 import io
 import json
 import re
@@ -53,6 +54,46 @@ def test_scan_garbage_shows_error(client):
     response = client.post("/scan", data=data, content_type="multipart/form-data")
     assert response.status_code == 200
     assert b"does not look like" in response.data
+
+
+def _post_files(client, files):
+    data = {"logfile": [(io.BytesIO(payload), name) for payload, name in files]}
+    return client.post("/scan", data=data, content_type="multipart/form-data")
+
+
+def test_scan_accepts_a_gzipped_upload(client):
+    records, _ = generate()
+    payload = gzip.compress(json.dumps({"Records": records}).encode("utf-8"))
+    response = _post_files(client, [(payload, "trail.json.gz")])
+    assert b"privilege_escalation" in response.data
+
+
+def test_scan_combines_several_uploads(client):
+    records, _ = generate()
+    half = len(records) // 2
+    first = json.dumps({"Records": records[:half]}).encode("utf-8")
+    second = gzip.compress(json.dumps({"Records": records[half:]}).encode("utf-8"))
+    combined = _post_files(client, [(first, "a.json"), (second, "b.json.gz")])
+    whole = _upload(client, records)
+    assert combined.data.count(b'class="finding ') == whole.data.count(
+        b'class="finding ')
+
+
+def test_scan_names_the_file_that_failed(client):
+    response = _post_files(client, [(b'{"Records": []}', "good.json"),
+                                    (b"not json", "broken.json")])
+    assert b"broken.json does not look like a CloudTrail export" in response.data
+
+
+def test_scan_with_no_file_chosen_asks_for_one(client):
+    response = _post_files(client, [(b"", "")])
+    assert b"Choose a CloudTrail" in response.data
+
+
+def test_landing_page_allows_several_files(client):
+    body = client.get("/").data
+    assert b"multiple" in body
+    assert b".gz" in body
 
 
 def test_demo_shows_findings(client):

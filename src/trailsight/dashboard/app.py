@@ -1,9 +1,9 @@
-import json
 import uuid
 
 from flask import Flask, jsonify, render_template, request
 
 from trailsight.engine import scan_records
+from trailsight.events import LoadError, records_from_bytes
 from trailsight.explain import ExplanationError, OllamaProvider, explain_finding
 from trailsight.generator import generate
 
@@ -46,19 +46,16 @@ def create_app(ollama_model="llama3", ollama_host="http://localhost:11434"):
 
     @app.post("/scan")
     def scan():
-        upload = request.files.get("logfile")
-        if upload is None:
+        uploads = [u for u in request.files.getlist("logfile") if u.filename]
+        if not uploads:
             return render_template("index.html",
-                                   error="Choose a CloudTrail JSON file to scan.")
+                                   error="Choose a CloudTrail file to scan.")
         try:
-            data = json.loads(upload.read().decode("utf-8"))
-            records = data["Records"] if isinstance(data, dict) else data
-            if not isinstance(records, list):
-                raise ValueError
-        except (json.JSONDecodeError, UnicodeDecodeError, ValueError, KeyError):
-            return render_template(
-                "index.html",
-                error="That does not look like a CloudTrail JSON export.")
+            records = [record for upload in uploads
+                       for record in records_from_bytes(upload.read(),
+                                                        upload.filename)]
+        except LoadError as error:
+            return render_template("index.html", error=str(error))
         return _render_results(records)
 
     @app.get("/demo")

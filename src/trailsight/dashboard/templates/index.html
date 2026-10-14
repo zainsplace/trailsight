@@ -4,8 +4,9 @@
   <form class="upload" method="post" action="{{ url_for('scan') }}"
         enctype="multipart/form-data">
     <label class="dropzone">
-      Drop a CloudTrail JSON file here or click to browse
-      <input type="file" name="logfile" accept=".json,application/json">
+      Drop CloudTrail files (.json or .json.gz) here or click to browse
+      <input type="file" name="logfile" multiple
+             accept=".json,.gz,application/json,application/gzip">
     </label>
     <button type="submit">Scan</button>
   </form>
