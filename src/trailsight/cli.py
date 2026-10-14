@@ -1,8 +1,12 @@
 import argparse
 import json
+import sys
 
+from trailsight import __version__
 from trailsight.engine import scan
+from trailsight.events import LoadError
 from trailsight.explain import ExplanationError, OllamaProvider, explain_all
+from trailsight.findings import SEVERITIES, at_least
 from trailsight.generator import write_dataset
 
 
@@ -24,6 +28,15 @@ def _finding_to_dict(finding):
     return payload
 
 
+def _summary_line(findings):
+    noun = "finding" if len(findings) == 1 else "findings"
+    counts = [
+        f"{count} {severity}" for severity in reversed(SEVERITIES)
+        if (count := sum(f.severity == severity for f in findings))
+    ]
+    return f"{len(findings)} {noun}: {', '.join(counts)}"
+
+
 def _print_text(findings):
     if not findings:
         print("No findings. The trail looks clean.")
@@ -36,18 +49,23 @@ def _print_text(findings):
         if finding.explanation:
             print(f"  explanation: {finding.explanation}")
         print()
+    print(_summary_line(findings))
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="trailsight")
+    parser.add_argument("--version", action="version",
+                        version=f"%(prog)s {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     generate = sub.add_parser("generate", help="Write a synthetic dataset")
     generate.add_argument("--output", required=True)
 
-    scanner = sub.add_parser("scan", help="Scan a CloudTrail JSON file")
-    scanner.add_argument("--input", required=True)
+    scanner = sub.add_parser("scan", help="Scan CloudTrail logs")
+    scanner.add_argument("--input", required=True, nargs="+",
+                         help="CloudTrail files (.json or .json.gz) or folders")
     scanner.add_argument("--format", choices=["json", "text"], default="text")
+    scanner.add_argument("--min-severity", choices=SEVERITIES, default="low")
     scanner.add_argument("--explain", action="store_true")
     scanner.add_argument("--ollama-model", default="llama3")
     scanner.add_argument("--ollama-host", default="http://localhost:11434")
@@ -77,7 +95,11 @@ def main(argv=None):
                                                      port=args.port)
         return 0
 
-    findings = scan(args.input)
+    try:
+        findings = at_least(scan(args.input), args.min_severity)
+    except LoadError as error:
+        print(f"trailsight: {error}", file=sys.stderr)
+        return 2
 
     if args.explain and findings:
         provider = OllamaProvider(model=args.ollama_model, host=args.ollama_host)
