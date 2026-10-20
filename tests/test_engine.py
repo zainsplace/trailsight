@@ -1,3 +1,5 @@
+from collections import Counter
+
 from trailsight.engine import scan, scan_records
 from trailsight.findings import SEVERITIES
 from trailsight.generator import generate, write_dataset
@@ -8,8 +10,16 @@ def test_scan_detects_every_seeded_attack(tmp_path):
     manifest = write_dataset(str(path))
     findings = scan(str(path))
     fired = {f.rule for f in findings}
-    expected = {entry["rule"] for entry in manifest}
+    expected = {entry["rule"] for entry in manifest if entry["fires"]}
     assert expected <= fired
+
+
+def test_scan_stays_silent_on_near_misses(tmp_path):
+    path = tmp_path / "data.json"
+    manifest = write_dataset(str(path))
+    fired = Counter((f.rule, f.identity) for f in scan(str(path)))
+    attacks = Counter((e["rule"], e["identity"]) for e in manifest if e["fires"])
+    assert fired == attacks
 
 
 def test_scan_on_empty_file_returns_no_findings(tmp_path):

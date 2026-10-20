@@ -22,6 +22,7 @@ def _record(name, arn, itype="IAMUser", ip="10.0.0.5", region="eu-west-1",
 def generate():
     alice = "arn:aws:iam::111:user/alice"
     bob = "arn:aws:iam::111:user/bob"
+    carol = "arn:aws:iam::111:user/carol"
     root = "arn:aws:iam::111:root"
     records = []
     manifest = []
@@ -41,31 +42,67 @@ def generate():
     records.append(_record("GetObject", alice, source="s3.amazonaws.com",
                            key="AKIALEAK", ip="203.0.113.9",
                            time="2026-01-02T02:03:00Z"))
-    manifest.append({"rule": "leaked_credentials", "identity": alice})
+    manifest.append({"rule": "leaked_credentials", "identity": alice, "fires": True})
 
     records.append(_record("AttachUserPolicy", bob,
                            params={"policyArn": "arn:aws:iam::aws:policy/AdministratorAccess",
                                    "userName": "bob"},
                            time="2026-01-02T03:00:00Z"))
-    manifest.append({"rule": "privilege_escalation", "identity": bob})
+    manifest.append({"rule": "privilege_escalation", "identity": bob, "fires": True})
 
     for minute in range(0, 40, 2):
         records.append(_record("DescribeInstances", bob, source="ec2.amazonaws.com",
                                time=f"2026-01-02T04:{minute:02d}:00Z"))
-    manifest.append({"rule": "recon", "identity": bob})
+    manifest.append({"rule": "recon", "identity": bob, "fires": True})
 
     records.append(_record("StopLogging", bob, source="cloudtrail.amazonaws.com",
                            params={"name": "main-trail"},
                            time="2026-01-02T05:00:00Z"))
-    manifest.append({"rule": "security_controls", "identity": bob})
+    manifest.append({"rule": "security_controls", "identity": bob, "fires": True})
 
     records.append(_record("CreateAccessKey", root, itype="Root", key=None,
                            time="2026-01-02T06:00:00Z"))
-    manifest.append({"rule": "root_usage", "identity": root})
+    manifest.append({"rule": "root_usage", "identity": root, "fires": True})
 
     records.append(_record("ConsoleLogin", bob, source="signin.amazonaws.com",
                            mfa="No", time="2026-01-02T07:00:00Z"))
-    manifest.append({"rule": "console_mfa", "identity": bob})
+    manifest.append({"rule": "console_mfa", "identity": bob, "fires": True})
+
+    records.append(_record("ConsoleLogin", carol, source="signin.amazonaws.com",
+                           mfa="Yes", time="2026-01-03T08:30:00Z"))
+    manifest.append({"rule": "console_mfa", "identity": carol, "fires": False})
+
+    records.append(_record("GetObject", carol, source="s3.amazonaws.com",
+                           key="AKIATRAVEL", ip="10.0.0.5",
+                           time="2026-01-03T09:00:00Z"))
+    records.append(_record("GetObject", carol, source="s3.amazonaws.com",
+                           key="AKIATRAVEL", ip="198.51.100.7",
+                           time="2026-01-03T12:00:00Z"))
+    manifest.append({"rule": "leaked_credentials", "identity": carol, "fires": False})
+
+    records.append(_record("AttachRolePolicy", carol,
+                           params={"policyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+                                   "roleName": "auditor"},
+                           time="2026-01-03T10:00:00Z"))
+    manifest.append({"rule": "privilege_escalation", "identity": carol, "fires": False})
+
+    for minute in range(0, 28, 2):
+        records.append(_record("DescribeInstances", carol, source="ec2.amazonaws.com",
+                               time=f"2026-01-03T13:{minute:02d}:00Z"))
+    manifest.append({"rule": "recon", "identity": carol, "fires": False})
+
+    records.append(_record("StartLogging", carol, source="cloudtrail.amazonaws.com",
+                           params={"name": "main-trail"},
+                           time="2026-01-03T14:00:00Z"))
+    records.append(_record("UpdateTrail", carol, source="cloudtrail.amazonaws.com",
+                           params={"name": "main-trail"},
+                           time="2026-01-03T14:05:00Z"))
+    manifest.append({"rule": "security_controls", "identity": carol, "fires": False})
+
+    records.append(_record("ConsoleLogin", root, itype="Root", key=None,
+                           source="signin.amazonaws.com",
+                           time="2026-01-03T15:00:00Z"))
+    manifest.append({"rule": "root_usage", "identity": root, "fires": False})
 
     return records, manifest
 

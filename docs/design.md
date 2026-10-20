@@ -161,6 +161,14 @@ interleaved with labelled attack scenarios, so detection accuracy can be
 measured against known ground truth. The tool reads real CloudTrail (local
 export, S3, or CloudWatch) for actual use.
 
+Every rule also gets a near miss: benign activity that sits just past the
+rule's boundary, labelled in the manifest with `fires: false`. A key used from
+two addresses three hours apart, a read-only policy attachment, fourteen
+enumeration calls in half an hour, re-enabling a trail, a root console login,
+and a console login with MFA. The engine test requires the scan to produce
+exactly one finding per planted attack and nothing else, so a rule loosened
+past its boundary fails the build instead of quietly adding noise.
+
 This keeps development at zero cost, safe, and reproducible, and it means every
 detector can be tested against events whose correct outcome is known.
 

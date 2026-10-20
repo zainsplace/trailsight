@@ -16,6 +16,13 @@ def test_generate_returns_records_and_manifest():
     } <= rules
 
 
+def test_generate_plants_a_near_miss_for_every_rule():
+    _, manifest = generate()
+    attacks = {entry["rule"] for entry in manifest if entry["fires"]}
+    near_misses = {entry["rule"] for entry in manifest if not entry["fires"]}
+    assert near_misses == attacks
+
+
 def test_write_dataset_is_loadable(tmp_path):
     path = tmp_path / "data.json"
     manifest = write_dataset(str(path))
