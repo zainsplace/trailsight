@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trailsight</title>
+    <meta name="color-scheme" content="light dark">
+    <title>{% block title %}Trailsight{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
     <header class="site-header">
-      <span class="brand">Trailsight</span>
-      {% block header_extra %}{% endblock %}
+      <div class="bar">
+        <a class="wordmark" href="{{ url_for('index') }}">Trailsight</a>
+        {% block header_extra %}{% endblock %}
+      </div>
     </header>
     <main>
       {% block content %}{% endblock %}

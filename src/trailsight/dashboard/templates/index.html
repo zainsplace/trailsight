@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <h1>Scan CloudTrail logs</h1>
+  <p class="lede">Files are read in memory and discarded after the scan.
+    Detection runs entirely on this computer.</p>
+  {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
   <form class="upload" method="post" action="{{ url_for('scan') }}"
         enctype="multipart/form-data">
     <label class="dropzone">
-      Drop CloudTrail files (.json or .json.gz) here or click to browse
-      <input type="file" name="logfile" multiple
+      <span class="dropzone-title">Choose CloudTrail files</span>
+      <span class="dropzone-hint">Drop .json or .json.gz exports here, or
+        click to browse. You can pick several at once.</span>
+      <span class="chosen" aria-live="polite">No files chosen</span>
+      <input class="file-input" type="file" name="logfile" multiple
              accept=".json,.gz,application/json,application/gzip">
     </label>
-    <button type="submit">Scan</button>
+    <div class="actions">
+      <button type="submit" class="primary">Scan files</button>
+      <p class="alt">No logs to hand? <a href="{{ url_for('demo') }}">Load demo data</a></p>
+    </div>
   </form>
-  <a class="demo" href="{{ url_for('demo') }}">Load demo data</a>
 {% endblock %}

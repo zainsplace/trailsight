@@ -77,11 +77,12 @@ The detection engine is unchanged. The dashboard imports and calls it.
 
 ## Visual direction
 
-A dark theme suited to a security tool, with a severity colour system
-(critical, high, medium, low), readable typography, and clear spacing so the
-page stays scannable. The specific palette, type, and layout polish are decided
-during implementation with the frontend-design skill; this spec fixes the
-structure and states, not the exact styling.
+A plain utility look that follows the system light or dark setting. Findings
+are rows in a single list, with severity as a coloured word in its own column
+(critical, high, medium, low), so the page reads like a triage queue rather than
+a stack of cards. Fonts are the operating system's own, so the page makes no
+network requests. Monospace is kept for real identifiers (rule IDs, ARNs, event
+names, IP addresses) and nothing else.
 
 ## Error handling
 

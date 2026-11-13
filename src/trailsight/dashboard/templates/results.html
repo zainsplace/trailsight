@@ -1,49 +1,71 @@
 {% extends "base.html" %}
+{% block title %}Scan results - Trailsight{% endblock %}
 {% block header_extra %}
-  <span class="summary">
-    {{ summary.total }} findings
-    {% for sev, count in summary.by_severity.items() %}
-      <span class="pill {{ sev }}">{{ count }} {{ sev }}</span>
-    {% endfor %}
-  </span>
+  <a class="header-link" href="{{ url_for('index') }}">New scan</a>
 {% endblock %}
 {% block content %}
+  {% set events_phrase = "{:,}".format(event_count) ~ (" event" if event_count == 1 else " events") %}
   {% if not findings %}
-    <p class="clean">No findings. The trail looks clean.</p>
+    <h1>No findings</h1>
+    {% if event_count == 0 %}
+      <p class="lede">There were no events to check in {{ source }}. Make sure
+        you exported the right trail and time range.</p>
+    {% else %}
+      <p class="lede">Checked {{ events_phrase }} in {{ source }}. The trail looks clean.</p>
+    {% endif %}
   {% else %}
-    <div class="filter">
-      <button data-filter="all">All</button>
-      <button data-filter="critical">Critical</button>
-      <button data-filter="high">High</button>
-      <button data-filter="medium">Medium</button>
-      <button data-filter="low">Low</button>
+    <h1>{{ summary.total }} finding{{ "" if summary.total == 1 else "s" }}</h1>
+    <p class="lede">From {{ events_phrase }} in {{ source }}, most severe first.</p>
+
+    <div class="filter" role="group" aria-label="Filter by severity">
+      <button type="button" data-filter="all" aria-pressed="true">All
+        <span class="count">{{ summary.total }}</span></button>
+      {% for sev in ["critical", "high", "medium", "low"] if sev in summary.by_severity %}
+        <button type="button" class="{{ sev }}" data-filter="{{ sev }}"
+                aria-pressed="false">{{ sev | capitalize }}
+          <span class="count">{{ summary.by_severity[sev] }}</span></button>
+      {% endfor %}
     </div>
+
     <ul class="findings" data-scan-id="{{ scan_id }}">
       {% for finding in findings %}
         <li class="finding {{ finding.severity }}" data-severity="{{ finding.severity }}">
-          <span class="sev-tag">{{ finding.severity }}</span>
-          <h2>{{ finding.title }}</h2>
-          <p class="meta">{{ finding.rule }} · {{ finding.identity }}</p>
-          <p class="desc">{{ finding.description }}</p>
-          <button class="explain" data-index="{{ loop.index0 }}">Explain</button>
-          <p class="explanation" hidden></p>
-          <details>
-            <summary>Show evidence</summary>
-            <table>
-              <tr><th>Time</th><th>Event</th><th>Source IP</th><th>Region</th></tr>
-              {% for event in finding.events %}
-                <tr>
-                  <td>{{ event.time.isoformat() }}</td>
-                  <td>{{ event.name }}</td>
-                  <td>{{ event.source_ip }}</td>
-                  <td>{{ event.region }}</td>
-                </tr>
-              {% endfor %}
-            </table>
-          </details>
+          <p class="severity">{{ finding.severity | capitalize }}</p>
+          <div class="body">
+            <div class="head">
+              <h2>{{ finding.title }}</h2>
+              <button type="button" class="explain" data-index="{{ loop.index0 }}">Explain</button>
+            </div>
+            <p class="desc">{{ finding.description }}</p>
+            <p class="explanation" hidden></p>
+            <dl class="meta">
+              <div><dt>Rule</dt><dd><code>{{ finding.rule }}</code></dd></div>
+              <div><dt>Identity</dt><dd><code>{{ finding.identity }}</code></dd></div>
+            </dl>
+            <details>
+              <summary>Evidence ({{ finding.events | length }}
+                event{{ "" if finding.events | length == 1 else "s" }})</summary>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Time (UTC)</th><th>Event</th><th>Source IP</th><th>Region</th></tr>
+                  </thead>
+                  <tbody>
+                    {% for event in finding.events %}
+                      <tr>
+                        <td>{{ event.time.strftime("%d %b %Y %H:%M:%S") }}</td>
+                        <td><code>{{ event.name }}</code></td>
+                        <td><code>{{ event.source_ip }}</code></td>
+                        <td>{{ event.region }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
         </li>
       {% endfor %}
     </ul>
   {% endif %}
-  <a class="back" href="{{ url_for('index') }}">Scan another file</a>
 {% endblock %}

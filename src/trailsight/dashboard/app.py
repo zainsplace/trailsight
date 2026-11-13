@@ -27,11 +27,12 @@ def _summary(findings):
     return {"total": len(findings), "by_severity": counts}
 
 
-def _render_results(records):
+def _render_results(records, source):
     findings = scan_records(records)
     return render_template("results.html", findings=findings,
                            summary=_summary(findings),
-                           scan_id=_store(findings))
+                           scan_id=_store(findings),
+                           source=source, event_count=len(records))
 
 
 def create_app(ollama_model="llama3", ollama_host="http://localhost:11434"):
@@ -56,12 +57,14 @@ def create_app(ollama_model="llama3", ollama_host="http://localhost:11434"):
                                                         upload.filename)]
         except LoadError as error:
             return render_template("index.html", error=str(error))
-        return _render_results(records)
+        source = (uploads[0].filename if len(uploads) == 1
+                  else f"{len(uploads)} files")
+        return _render_results(records, source)
 
     @app.get("/demo")
     def demo():
         records, _ = generate()
-        return _render_results(records)
+        return _render_results(records, "the demo dataset")
 
     @app.post("/explain")
     def explain():

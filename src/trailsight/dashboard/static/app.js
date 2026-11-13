@@ -4,17 +4,38 @@ buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     const wanted = button.dataset.filter;
     buttons.forEach(function (other) {
-      other.classList.toggle("active", other === button);
+      other.setAttribute("aria-pressed", String(other === button));
     });
-    document.querySelectorAll(".finding").forEach(function (card) {
-      const show = wanted === "all" || card.dataset.severity === wanted;
-      card.style.display = show ? "" : "none";
+    document.querySelectorAll(".finding").forEach(function (row) {
+      row.hidden = !(wanted === "all" || row.dataset.severity === wanted);
     });
   });
 });
 
-if (buttons.length) {
-  buttons[0].classList.add("active");
+const dropzone = document.querySelector(".dropzone");
+
+if (dropzone) {
+  const input = dropzone.querySelector(".file-input");
+  const chosen = dropzone.querySelector(".chosen");
+
+  input.addEventListener("change", function () {
+    const names = Array.from(input.files).map(function (file) {
+      return file.name;
+    });
+    chosen.textContent = names.length ? names.join(", ") : "No files chosen";
+    chosen.classList.toggle("has-files", names.length > 0);
+  });
+
+  ["dragenter", "dragover"].forEach(function (type) {
+    input.addEventListener(type, function () {
+      dropzone.classList.add("dragging");
+    });
+  });
+  ["dragleave", "drop"].forEach(function (type) {
+    input.addEventListener(type, function () {
+      dropzone.classList.remove("dragging");
+    });
+  });
 }
 
 const list = document.querySelector(".findings");
@@ -22,7 +43,7 @@ const list = document.querySelector(".findings");
 if (list) {
   document.querySelectorAll("button.explain").forEach(function (button) {
     button.addEventListener("click", function () {
-      const target = button.parentElement.querySelector(".explanation");
+      const target = button.closest(".finding").querySelector(".explanation");
       button.disabled = true;
       button.textContent = "Explaining…";
       target.hidden = false;
