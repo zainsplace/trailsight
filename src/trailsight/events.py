@@ -27,6 +27,9 @@ class Event:
     mfa_used: bool
     request_parameters: dict = field(default_factory=dict)
     raw: dict = field(default_factory=dict)
+    invoked_by: str | None = None
+    login_result: str | None = None
+    user_agent: str = ""
 
 
 def _parse_time(value):
@@ -51,6 +54,9 @@ def event_from_record(record):
         mfa_used=str(additional.get("MFAUsed", "")).lower() == "yes",
         request_parameters=record.get("requestParameters") or {},
         raw=record,
+        invoked_by=identity.get("invokedBy"),
+        login_result=(record.get("responseElements") or {}).get("ConsoleLogin"),
+        user_agent=record.get("userAgent", ""),
     )
 
 

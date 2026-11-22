@@ -137,3 +137,24 @@ def test_load_events_reports_a_corrupt_gzip_file(tmp_path):
     path.write_bytes(b"\x1f\x8bnot really gzip")
     with pytest.raises(LoadError, match="not a valid gzip file"):
         load_events(str(path))
+
+
+def test_event_keeps_fields_the_rules_need_to_skip_noise():
+    from trailsight.events import event_from_record
+    event = event_from_record({
+        "eventName": "ConsoleLogin",
+        "userIdentity": {"type": "Root", "invokedBy": "support.amazonaws.com"},
+        "responseElements": {"ConsoleLogin": "Failure"},
+        "userAgent": "Mozilla/5.0",
+    })
+    assert event.invoked_by == "support.amazonaws.com"
+    assert event.login_result == "Failure"
+    assert event.user_agent == "Mozilla/5.0"
+
+
+def test_event_defaults_when_those_fields_are_missing():
+    from trailsight.events import event_from_record
+    event = event_from_record({"eventName": "GetObject"})
+    assert event.invoked_by is None
+    assert event.login_result is None
+    assert event.user_agent == ""

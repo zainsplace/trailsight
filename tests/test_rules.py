@@ -163,3 +163,120 @@ def test_mfa_fires_when_login_without_mfa():
 
 def test_mfa_silent_when_mfa_used():
     assert mfa_detect([_event("ConsoleLogin", mfa_used=True)]) == []
+
+
+def _root(name, time, **kw):
+    return _event(name, arn="arn:aws:iam::111:root", identity_type="Root",
+                  time=time, **kw)
+
+
+def test_root_usage_groups_one_day_into_one_finding():
+    t = datetime(2026, 1, 1, 9, tzinfo=timezone.utc)
+    events = [_root("ListUsers", t + timedelta(minutes=i)) for i in range(30)]
+    findings = root_detect(events)
+    assert len(findings) == 1
+    assert len(findings[0].events) == 30
+    assert "30 API calls on 2026-01-01" in findings[0].description
+
+
+def test_root_usage_gives_each_day_its_own_finding():
+    t = datetime(2026, 1, 1, 9, tzinfo=timezone.utc)
+    events = [_root("ListUsers", t), _root("ListUsers", t + timedelta(days=1))]
+    assert len(root_detect(events)) == 2
+
+
+def test_root_usage_ignores_calls_aws_makes_on_roots_behalf():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _root("DescribeAccountLimits", t, invoked_by="support.amazonaws.com",
+              source_ip="support.amazonaws.com"),
+        _root("GetBucketLocation", t, source_ip="AWS Internal"),
+    ]
+    assert root_detect(events) == []
+
+
+def test_mfa_silent_on_failed_login():
+    events = [_event("ConsoleLogin", mfa_used=False, login_result="Failure")]
+    assert mfa_detect(events) == []
+
+
+def test_mfa_silent_on_federated_and_role_sessions():
+    events = [
+        _event("ConsoleLogin", mfa_used=False, login_result="Success",
+               identity_type="AssumedRole"),
+        _event("ConsoleLogin", mfa_used=False, login_result="Success",
+               identity_type="FederatedUser"),
+    ]
+    assert mfa_detect(events) == []
+
+
+def test_mfa_fires_for_root_password_login():
+    events = [_event("ConsoleLogin", mfa_used=False, login_result="Success",
+                     identity_type="Root", arn="arn:aws:iam::111:root")]
+    assert len(mfa_detect(events)) == 1
+
+
+def test_leaked_credentials_ignores_aws_internal_as_a_location():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("GetObject", access_key_id="AKIAONE", source_ip="10.0.0.5", time=t),
+        _event("GetObject", access_key_id="AKIAONE", source_ip="AWS Internal",
+               time=t + timedelta(minutes=1)),
+    ]
+    assert leaked_detect(events) == []
+
+
+def test_leaked_credentials_ignores_lambda():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("CreateLogStream", access_key_id="ASIALAMBDA", source_ip=ip,
+               user_agent="awslambda-worker/1.0", time=t + timedelta(minutes=i))
+        for i, ip in enumerate(["3.8.0.1", "3.8.0.2", "3.8.0.3"])
+    ]
+    assert leaked_detect(events) == []
+
+
+def test_leaked_credentials_fires_on_root_sessions_from_two_places():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _root("DescribeEventAggregates", t, access_key_id="ASIAONE",
+              source_ip="54.188.0.152"),
+        _root("DescribeEventAggregates", t + timedelta(seconds=2),
+              access_key_id="ASIATWO", source_ip="23.93.193.6"),
+    ]
+    findings = leaked_detect(events)
+    assert len(findings) == 1
+    assert "root account" in findings[0].description
+
+
+def test_leaked_credentials_fires_on_console_logins_from_two_places():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("ConsoleLogin", access_key_id=None, source_ip="34.210.39.194",
+               login_result="Success", time=t),
+        _event("ConsoleLogin", access_key_id=None, source_ip="34.217.70.77",
+               login_result="Success", time=t + timedelta(minutes=30)),
+    ]
+    findings = leaked_detect(events)
+    assert len(findings) == 1
+    assert "signed in to the console" in findings[0].description
+
+
+def test_leaked_credentials_silent_on_failed_logins_from_two_places():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _event("ConsoleLogin", access_key_id=None, source_ip=ip,
+               login_result="Failure", time=t + timedelta(minutes=i))
+        for i, ip in enumerate(["34.210.39.194", "34.217.70.77"])
+    ]
+    assert leaked_detect(events) == []
+
+
+def test_leaked_credentials_reports_a_root_burst_once():
+    t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = [
+        _root("ListUsers", t, access_key_id="ASIAROOT", source_ip="54.188.0.152"),
+        _root("ListUsers", t + timedelta(minutes=1), access_key_id="ASIAROOT",
+              source_ip="23.93.193.6"),
+    ]
+    assert len(leaked_detect(events)) == 1
