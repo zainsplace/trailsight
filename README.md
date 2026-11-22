@@ -32,12 +32,14 @@ handing their logs to a vendor.
 
 ## What it detects
 
-- Leaked credentials: one access key used from multiple locations in a short time
+- Leaked credentials: an access key, the root account or a console password
+  used from multiple locations in a short time
 - Privilege escalation: an administrator policy attached to a principal
 - Reconnaissance: bursts of enumeration calls
 - Disabled security controls: CloudTrail or GuardDuty turned off
-- Root account activity
-- Console logins without MFA
+- Root account activity, one finding per day
+- Successful console logins without MFA by IAM users or root (federated
+  sign-ins are checked by your identity provider, not CloudTrail)
 
 ## How well it works
 
@@ -47,18 +49,20 @@ real events from the public [flaws.cloud](https://summitroute.com/blog/2020/10/0
 challenges. Labels were fixed before anything ran, and no rule was tuned on
 this data.
 
-| Measure | Result |
-|---|---|
-| Attacks the rules claim to cover, caught by the intended rule | 6 of 9 |
-| Findings on attack samples that were correct | 38 of 206 (18%) |
-| flaws.cloud findings: attacker / correct but authorised / wrong | 56 / 8,328 / 2,935 |
-| Rules over 1.9 million events | 2.3 s (856,000 events a second) |
+| Measure | 0.1.0 | After first fixes |
+|---|---|---|
+| Attacks the rules claim to cover, caught by the intended rule | 6 of 9 | 8 of 9 |
+| Findings on attack samples: correct / wrong / unclear | 38 / 168 / 11 | 32 / 4 / 13 |
+| flaws.cloud findings: attacker / correct but authorised / wrong | 56 / 8,328 / 2,935 | 56 / 85 / 4 |
+| Rules over 1.9 million events | 2.3 s | 2.7 s |
 
-The disabled-logging and root rules are accurate. The MFA rule fires on failed
-logins and federated sessions, the leaked credentials rule misses attacks that
-rotate temporary keys and fires on Lambda, and root activity is reported once
-per API call, which buries the real attacks. The full method, every miss and
-the fixes to test are in [docs/evaluation.md](docs/evaluation.md).
+The first run showed the MFA rule firing on failed logins and federated
+sessions, the leaked credentials rule missing attacks that rotate temporary
+keys and firing on Lambda, and root activity reported once per API call, which
+buried the real attacks. Those three are fixed. The fixed figures come from the
+same data that exposed the problems, so they still need checking on fresh
+data. The full method, every miss and the remaining fixes are in
+[docs/evaluation.md](docs/evaluation.md).
 
 ## Quick start
 

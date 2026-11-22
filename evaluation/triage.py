@@ -56,7 +56,9 @@ def classify(source, finding):
         return "TP", "successful password-only login in attack data"
 
     if rule == "root_usage":
-        if _aws_acted(first):
+        # Since root findings were grouped by day, judge the whole day, not
+        # its first call. Single-call findings are judged exactly as before.
+        if all(_aws_acted(e) for e in finding.events):
             return "FP", "AWS made the call on the account's behalf"
         if source == "flaws":
             return "BTP", "account owner using root"

@@ -2,13 +2,19 @@
   "console_mfa": {
     "TP": 10,
     "BTP": 0,
-    "FP": 162,
+    "FP": 0,
     "UNCLEAR": 0
   },
-  "root_usage": {
-    "TP": 10,
+  "leaked_credentials": {
+    "TP": 0,
     "BTP": 0,
-    "FP": 1,
+    "FP": 0,
+    "UNCLEAR": 6
+  },
+  "root_usage": {
+    "TP": 4,
+    "BTP": 0,
+    "FP": 0,
     "UNCLEAR": 0
   },
   "recon": {
@@ -16,12 +22,6 @@
     "BTP": 0,
     "FP": 4,
     "UNCLEAR": 7
-  },
-  "leaked_credentials": {
-    "TP": 0,
-    "BTP": 0,
-    "FP": 1,
-    "UNCLEAR": 4
   },
   "security_controls": {
     "TP": 9,

@@ -20,8 +20,9 @@ In short: the rules for disabled logging and root activity are accurate. The MFA
 rule is mostly wrong because it fires on failed logins and federated sessions.
 The leaked credentials rule misses the attacks it is named for and fires on
 Lambda. Root activity is reported once per API call, which buries everything
-else. The fixes are listed at the end and have not been made yet, because they
-need testing on data that was not used to find them.
+else. The first three fixes have since been made (see Fixed since); the rest
+are listed at the end. All of them still need testing on data that was not
+used to find them.
 
 ## Data
 
@@ -159,9 +160,39 @@ flaws.cloud set (1,939,207 events, 241 MB gzipped):
 Peak Python memory was about 7.8 GB (4 KB an event), measured in a separate
 run, because every raw record is kept in memory twice. Fine for a small account, a problem for years of logs from a busy one.
 
+## Fixed since
+
+Changes 1 to 3 below were made on 2026-11-22, with tests. Everything else in
+this document describes 0.1.0 before them.
+
+| Measure | 0.1.0 | After fixes 1 to 3 |
+|---|---|---|
+| In scope attacks caught by the intended rule | 6 of 9 | 8 of 9 |
+| Findings on attack samples | 217 | 49 |
+| Of those, TP / FP / unclear | 38 / 168 / 11 | 32 / 4 / 13 |
+| flaws.cloud findings | 11,319 | 145 |
+| Of those, TP / BTP / FP | 56 / 8,328 / 2,935 | 56 / 85 / 4 |
+
+- Both leaked credentials misses are now caught: root and console sign-ins are
+  grouped by identity as well as by key. Triage still marks them unclear,
+  because it has no way to tell those two addresses were an attacker; the
+  labels say they were.
+- Root activity is one finding per day: 10,935 findings became 63, and the
+  same 61 days of owner activity are all still there.
+- No attack finding was lost on flaws.cloud: still 56.
+- Two root findings are still false positives: days where every call came
+  from an AWS console backend, which the rule does not yet recognise.
+- To judge grouped root findings fairly, triage now checks every call in the
+  day, not only the first. Re-running triage on 0.1.0 gives the same numbers
+  as above.
+
+This is the same data that exposed the problems, so these figures show the
+fixes do what they were meant to, not how well they generalise. The fresh-data
+check described below still applies.
+
 ## What to change
 
-Each of these came from a finding above. None has been made yet.
+Each of these came from a finding above. 1 to 3 are done (see Fixed since).
 
 1. **console_mfa**: ignore failed logins. Treat federated and role sessions
    separately, since CloudTrail cannot show their MFA.
@@ -209,4 +240,5 @@ and on a week of normal activity from a real small account.
     python evaluation/run_flaws.py
     python evaluation/run_flaws.py --memory
 
-Results are written to `evaluation/results/`.
+Results are written to `evaluation/results/`. The committed results match the
+current code; check out commit a1a5503 to reproduce the 0.1.0 figures.

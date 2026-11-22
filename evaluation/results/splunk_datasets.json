@@ -47,7 +47,7 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 37,
-    "findings": 34,
+    "findings": 2,
     "rules_fired": [
       "console_mfa"
     ],
@@ -129,10 +129,8 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 7,
-    "findings": 7,
-    "rules_fired": [
-      "console_mfa"
-    ],
+    "findings": 0,
+    "rules_fired": [],
     "detected": null
   },
   {
@@ -151,10 +149,8 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 31,
-    "findings": 31,
-    "rules_fired": [
-      "console_mfa"
-    ],
+    "findings": 0,
+    "rules_fired": [],
     "detected": null
   },
   {
@@ -163,10 +159,8 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 28,
-    "findings": 28,
-    "rules_fired": [
-      "console_mfa"
-    ],
+    "findings": 0,
+    "rules_fired": [],
     "detected": null
   },
   {
@@ -187,9 +181,10 @@
     "events": 2,
     "findings": 2,
     "rules_fired": [
+      "leaked_credentials",
       "root_usage"
     ],
-    "detected": false
+    "detected": true
   },
   {
     "dataset": "T1201__aws_password_policy__cloudtrail.json",
@@ -197,7 +192,7 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 7,
-    "findings": 5,
+    "findings": 1,
     "rules_fired": [
       "root_usage"
     ],
@@ -371,7 +366,7 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 2,
-    "findings": 2,
+    "findings": 1,
     "rules_fired": [
       "root_usage"
     ],
@@ -538,11 +533,12 @@
     "expected_rule": "leaked_credentials",
     "adjacent_to": "",
     "events": 8,
-    "findings": 8,
+    "findings": 7,
     "rules_fired": [
-      "console_mfa"
+      "console_mfa",
+      "leaked_credentials"
     ],
-    "detected": false
+    "detected": true
   },
   {
     "dataset": "T1621__aws_failed_mfa__cloudtrail.json",
@@ -560,9 +556,8 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 2,
-    "findings": 3,
+    "findings": 1,
     "rules_fired": [
-      "leaked_credentials",
       "root_usage"
     ],
     "detected": null
@@ -573,9 +568,8 @@
     "expected_rule": "",
     "adjacent_to": "",
     "events": 8100,
-    "findings": 63,
+    "findings": 1,
     "rules_fired": [
-      "console_mfa",
       "leaked_credentials"
     ],
     "detected": null

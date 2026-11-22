@@ -2,43 +2,43 @@
   "events": 1939207,
   "first_event": "2017-02-12T19:57:06+00:00",
   "last_event": "2020-10-07T21:03:30+00:00",
-  "load_seconds": 12.7,
-  "parse_seconds": 4.7,
-  "detect_seconds": 2.3,
-  "detect_events_per_second": 856256,
-  "end_to_end_events_per_second": 98308,
-  "peak_memory_mb": 7817,
+  "load_seconds": 12.6,
+  "parse_seconds": 5.5,
+  "detect_seconds": 2.7,
+  "detect_events_per_second": 730678,
+  "end_to_end_events_per_second": 93585,
+  "peak_memory_mb": null,
   "rule_seconds": {
-    "leaked_credentials": 0.59,
-    "privilege_escalation": 0.14,
-    "recon": 1.32,
+    "leaked_credentials": 1.02,
+    "privilege_escalation": 0.11,
+    "recon": 1.31,
     "security_controls": 0.1,
     "root_usage": 0.04,
-    "console_mfa": 0.07
+    "console_mfa": 0.08
   },
-  "findings": 11319,
-  "findings_per_1000_events": 5.84,
+  "findings": 145,
+  "findings_per_1000_events": 0.07,
   "findings_by_rule": {
-    "root_usage": 10935,
-    "leaked_credentials": 346,
-    "console_mfa": 19,
+    "root_usage": 63,
+    "leaked_credentials": 61,
     "recon": 15,
     "security_controls": 3,
+    "console_mfa": 2,
     "privilege_escalation": 1
   },
   "distinct_identities_by_rule": {
-    "leaked_credentials": 7,
+    "leaked_credentials": 5,
     "privilege_escalation": 1,
     "recon": 15,
     "security_controls": 2,
     "root_usage": 1,
-    "console_mfa": 4
+    "console_mfa": 2
   },
   "triage": {
     "leaked_credentials": {
       "TP": 47,
       "BTP": 14,
-      "FP": 285,
+      "FP": 0,
       "UNCLEAR": 0
     },
     "privilege_escalation": {
@@ -61,34 +61,29 @@
     },
     "root_usage": {
       "TP": 0,
-      "BTP": 8304,
-      "FP": 2631,
+      "BTP": 61,
+      "FP": 2,
       "UNCLEAR": 0
     },
     "console_mfa": {
       "TP": 0,
       "BTP": 2,
-      "FP": 17,
+      "FP": 0,
       "UNCLEAR": 0
     }
   },
   "root_usage_distinct_days": 61,
   "triage_reasons": {
     "console_mfa BTP: account owner signing in without MFA": 2,
-    "console_mfa FP: federated or role session; MFA happens at the identity provider and is not recorded": 5,
-    "console_mfa FP: login failed, so nobody signed in": 12,
     "leaked_credentials BTP: account owner": 14,
-    "leaked_credentials FP: Lambda runs invocations on different hosts, so its key changes address": 279,
-    "leaked_credentials FP: only one real address; the other 'location' is AWS itself": 6,
     "leaked_credentials TP: challenge credentials leaked by design, used from several places": 47,
     "privilege_escalation BTP: account owner": 1,
     "recon BTP: the owner's own audit tool or console session": 6,
     "recon FP: AWS service or cluster automation": 2,
     "recon TP: challenge player enumerating the account": 7,
-    "root_usage BTP: account owner using root": 8304,
-    "root_usage FP: AWS made the call on the account's behalf": 2631,
+    "root_usage BTP: account owner using root": 61,
+    "root_usage FP: AWS made the call on the account's behalf": 2,
     "security_controls BTP: account owner": 1,
     "security_controls TP: attempt was denied, but the finding text says it happened": 2
-  },
-  "peak_memory_note": "measured in a separate run with --memory, which slows timings"
+  }
 }
