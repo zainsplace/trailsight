@@ -1,0 +1,3525 @@
+[
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1078.004__aws_login_sfa__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": "arn:aws:iam::111111111111:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1078.004__aws_login_sfa__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": "arn:aws:iam::111111111111:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:user/AtomicRedTeam",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:iam::111111111111:user/AtomicRedTeam signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:user/AtomicRedTeam",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:iam::111111111111:user/AtomicRedTeam signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "73.15.72.101"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/bpatel@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "67.171.71.185"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "67.170.197.242"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "67.170.197.242"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "67.170.197.242"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "67.170.197.242"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "136.32.158.14"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "24.5.32.5"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": " signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1185__aws_concurrent_sessions_from_different_ips__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "DescribeEventAggregates"
+    ],
+    "source_ips": [
+      "54.188.0.152"
+    ],
+    "description": "The account root identity performed DescribeEventAggregates. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1185__aws_concurrent_sessions_from_different_ips__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "DescribeEventAggregates"
+    ],
+    "source_ips": [
+      "23.93.193.6"
+    ],
+    "description": "The account root identity performed DescribeEventAggregates. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1201__aws_password_policy__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "UpdateAccountPasswordPolicy"
+    ],
+    "source_ips": [
+      "23.93.193.7"
+    ],
+    "description": "The account root identity performed UpdateAccountPasswordPolicy. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1201__aws_password_policy__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "GetAccountPasswordPolicy"
+    ],
+    "source_ips": [
+      "23.93.193.7"
+    ],
+    "description": "The account root identity performed GetAccountPasswordPolicy. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1201__aws_password_policy__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "DeleteAccountPasswordPolicy"
+    ],
+    "source_ips": [
+      "23.93.193.7"
+    ],
+    "description": "The account root identity performed DeleteAccountPasswordPolicy. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1201__aws_password_policy__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "UpdateAccountPasswordPolicy"
+    ],
+    "source_ips": [
+      "23.93.193.7"
+    ],
+    "description": "The account root identity performed UpdateAccountPasswordPolicy. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1201__aws_password_policy__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "GetAccountPasswordPolicy"
+    ],
+    "source_ips": [
+      "23.93.193.7"
+    ],
+    "description": "The account root identity performed GetAccountPasswordPolicy. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS service or cluster automation",
+    "dataset": "T1486__aws_kms_key__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/config-role-us-west-2/KMSDescribeHandlerSession",
+    "event_names": [
+      "DescribeKey",
+      "GetKeyPolicy",
+      "GetKeyRotationStatus",
+      "ListKeys",
+      "ListResourceTags"
+    ],
+    "source_ips": [
+      "config.amazonaws.com"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/config-role-us-west-2/KMSDescribeHandlerSession made 39 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1486__aws_kms_key__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "DescribeKey",
+      "ListAliases"
+    ],
+    "source_ips": [
+      "95.90.199.65"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local made 46 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1486__aws_kms_key__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_ro_role/botocore-session-1610357084",
+    "event_names": [
+      "DescribeKey",
+      "GetKeyPolicy",
+      "GetKeyRotationStatus",
+      "ListAliases",
+      "ListGrants",
+      "ListKeys"
+    ],
+    "source_ips": [
+      "204.107.141.240"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_ro_role/botocore-session-1610357084 made 159 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1526__aws_security_scanner__aws_security_scanner.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:user/cloudsploit",
+    "event_names": [
+      "DescribeAccountAttributes",
+      "DescribeActiveReceiptRuleSet",
+      "DescribeAddresses",
+      "DescribeAutoScalingGroups",
+      "DescribeClusterParameterGroups",
+      "DescribeClusters",
+      "DescribeConfigurationRecorderStatus",
+      "DescribeConfigurationRecorders",
+      "DescribeDBClusters",
+      "DescribeDBEngineVersions",
+      "DescribeDBInstances",
+      "DescribeDBParameterGroups",
+      "DescribeDBSnapshots",
+      "DescribeEgressOnlyInternetGateways",
+      "DescribeEmergencyContactSettings",
+      "DescribeEnvironments",
+      "DescribeFileSystems",
+      "DescribeFlowLogs",
+      "DescribeImages",
+      "DescribeInstanceInformation",
+      "DescribeInstances",
+      "DescribeInternetGateways",
+      "DescribeIpGroups",
+      "DescribeLaunchConfigurations",
+      "DescribeLoadBalancers",
+      "DescribeLogGroups",
+      "DescribeMetricFilters",
+      "DescribeNatGateways",
+      "DescribeNetworkAcls",
+      "DescribeNetworkInterfaces",
+      "DescribeOrganization",
+      "DescribeParameters",
+      "DescribeReplicationInstances",
+      "DescribeRepositories",
+      "DescribeReservedNodes",
+      "DescribeRouteTables",
+      "DescribeSecurityGroups",
+      "DescribeSnapshots",
+      "DescribeSubnets",
+      "DescribeSubscription",
+      "DescribeTags",
+      "DescribeTargetGroups",
+      "DescribeTrails",
+      "DescribeTrustedAdvisorChecks",
+      "DescribeVolumes",
+      "DescribeVpcEndpointServices",
+      "DescribeVpcEndpoints",
+      "DescribeVpcPeeringConnections",
+      "DescribeVpcs",
+      "DescribeVpnConnections",
+      "DescribeVpnGateways",
+      "DescribeWorkspaceDirectories",
+      "DescribeWorkspaces"
+    ],
+    "source_ips": [
+      "95.90.195.80"
+    ],
+    "description": "arn:aws:iam::111111111111:user/cloudsploit made 1071 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "real attack, but bulk GetLogEvents is collection, not reconnaissance",
+    "dataset": "T1530__aws_cloudwatch_logs_high_volume_retrieval__aws_cloudwatch_logs_high_volume_retrieval.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111122223333:assumed-role/cloud-research-role/research-session",
+    "event_names": [
+      "GetLogEvents"
+    ],
+    "source_ips": [
+      "198.51.100.10"
+    ],
+    "description": "arn:aws:sts::111122223333:assumed-role/cloud-research-role/research-session made 650 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "real attack, but bulk GetObject is collection, not reconnaissance",
+    "dataset": "T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:user/console",
+    "event_names": [
+      "GetObject"
+    ],
+    "source_ips": [
+      "12.26.0.38"
+    ],
+    "description": "arn:aws:iam::111111111111:user/console made 100 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1552__aws_getpassworddata__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/sample-role-used-by-stratus-for-ec2-password-data/aws-go-sdk-1660169051746043000",
+    "event_names": [
+      "GetPasswordData"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/sample-role-used-by-stratus-for-ec2-password-data/aws-go-sdk-1660169051746043000 made 30 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1552__aws_getpassworddata__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/sample-role-used-by-stratus-for-ec2-password-data/aws-go-sdk-1660168733756283000",
+    "event_names": [
+      "GetPasswordData"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/sample-role-used-by-stratus-for-ec2-password-data/aws-go-sdk-1660168733756283000 made 30 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "two real addresses, no ground truth for the key",
+    "dataset": "T1555.006__aws_anomalous_secrets_manager_batch_retrieval__aws_anomalous_secrets_manager_batch_retrieval.json",
+    "rule": "leaked_credentials",
+    "severity": "high",
+    "identity": "arn:aws:sts::111122223333:assumed-role/lab-role-fd78fa906a/lab-session",
+    "event_names": [
+      "BatchGetSecretValue"
+    ],
+    "source_ips": [
+      "192.0.2.244",
+      "2001:db8::463c"
+    ],
+    "description": "Access key ASIA12FB6AC7F8000000 was used from 2 different source addresses within an hour, which suggests the key has been shared or stolen."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1556.006__aws_new_mfa_method_registered_for_user__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "CreateVirtualMFADevice"
+    ],
+    "source_ips": [
+      "23.93.193.6"
+    ],
+    "description": "The account root identity performed CreateVirtualMFADevice. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1556.006__aws_new_mfa_method_registered_for_user__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "CreateVirtualMFADevice"
+    ],
+    "source_ips": [
+      "23.93.193.6"
+    ],
+    "description": "The account root identity performed CreateVirtualMFADevice. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS service or cluster automation",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/AWSServiceRoleForAutoScaling/AutoScaling",
+    "event_names": [
+      "DescribeInstanceStatus",
+      "DescribeInstances"
+    ],
+    "source_ips": [
+      "autoscaling.amazonaws.com"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/AWSServiceRoleForAutoScaling/AutoScaling made 138 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_ro_role/botocore-session-1610443391",
+    "event_names": [
+      "DescribeFlowLogs",
+      "DescribeImages",
+      "DescribeInstanceAttribute",
+      "DescribeInstances",
+      "DescribeNetworkAcls",
+      "DescribeNetworkInterfaces",
+      "DescribeRegions",
+      "DescribeSecurityGroups",
+      "DescribeSnapshotAttribute",
+      "DescribeSnapshots",
+      "DescribeSubnets",
+      "DescribeVolumes",
+      "DescribeVpcPeeringConnections",
+      "DescribeVpcs"
+    ],
+    "source_ips": [
+      "204.107.141.240"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_ro_role/botocore-session-1610443391 made 245 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/jhernandez@splunk.local",
+    "event_names": [
+      "DescribeKeyPairs",
+      "DescribeLaunchTemplates",
+      "DescribeSecurityGroups",
+      "DescribeSubnets",
+      "DescribeVpcs"
+    ],
+    "source_ips": [
+      "73.204.247.3"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/jhernandez@splunk.local made 105 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS service or cluster automation",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/kubernetes-admin/1606775867489102853",
+    "event_names": [
+      "DescribeInstances"
+    ],
+    "source_ips": [
+      "eks.amazonaws.com"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/kubernetes-admin/1606775867489102853 made 1380 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS service or cluster automation",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/kubernetes_rodckeyp20201006215709609400000001/1606009860897927194",
+    "event_names": [
+      "DescribeInstances"
+    ],
+    "source_ips": [
+      "eks.amazonaws.com"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/kubernetes_rodckeyp20201006215709609400000001/1606009860897927194 made 31 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "DescribeAddresses",
+      "DescribeCustomerGateways",
+      "DescribeDhcpOptions",
+      "DescribeEgressOnlyInternetGateways",
+      "DescribeInstances",
+      "DescribeInternetGateways",
+      "DescribeNatGateways",
+      "DescribeNetworkAcls",
+      "DescribeRegions",
+      "DescribeRouteTables",
+      "DescribeSecurityGroups",
+      "DescribeSubnets",
+      "DescribeTags",
+      "DescribeVpcEndpointServiceConfigurations",
+      "DescribeVpcEndpoints",
+      "DescribeVpcPeeringConnections",
+      "DescribeVpcs",
+      "DescribeVpnConnections",
+      "DescribeVpnGateways"
+    ],
+    "source_ips": [
+      "95.90.199.65"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local made 110 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::111111111111:user/patrick_cli",
+    "event_names": [
+      "DescribeAccountAttributes",
+      "DescribeAddresses",
+      "DescribeAvailabilityZones",
+      "DescribeImages",
+      "DescribeInstanceAttribute",
+      "DescribeInstanceCreditSpecifications",
+      "DescribeInstances",
+      "DescribeInternetGateways",
+      "DescribeNatGateways",
+      "DescribeNetworkAcls",
+      "DescribeRouteTables",
+      "DescribeSecurityGroups",
+      "DescribeSubnets",
+      "DescribeTags",
+      "DescribeVolumes",
+      "DescribeVpcAttribute",
+      "DescribeVpcClassicLink",
+      "DescribeVpcClassicLinkDnsSupport",
+      "DescribeVpcs"
+    ],
+    "source_ips": [
+      "95.90.199.65"
+    ],
+    "description": "arn:aws:iam::111111111111:user/patrick_cli made 135 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "administrator activity in the dataset background",
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_ro_role/AssumeRole324_Splunk_Security_Research",
+    "event_names": [
+      "DescribeFlowLogs",
+      "DescribeInstances",
+      "DescribeSecurityGroups"
+    ],
+    "source_ips": [
+      "52.43.171.252"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_ro_role/AssumeRole324_Splunk_Security_Research made 62 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "attempt was denied, but the finding text says it happened",
+    "dataset": "T1562.008__aws_delete_security_services__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/gowthamaraj_cli",
+    "event_names": [
+      "DeleteDetector"
+    ],
+    "source_ips": [
+      "67.171.71.185"
+    ],
+    "description": "GuardDuty threat detection was deleted by arn:aws:iam::111111111111:user/gowthamaraj_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "attempt was denied, but the finding text says it happened",
+    "dataset": "T1562.008__aws_delete_security_services__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/gowthamaraj_cli",
+    "event_names": [
+      "DeleteDetector"
+    ],
+    "source_ips": [
+      "67.171.71.185"
+    ],
+    "description": "GuardDuty threat detection was deleted by arn:aws:iam::111111111111:user/gowthamaraj_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__delete_cloudwatch_log_group__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/bhavin_cli",
+    "event_names": [
+      "StopLogging"
+    ],
+    "source_ips": [
+      "72.193.184.209"
+    ],
+    "description": "CloudTrail logging was stopped by arn:aws:iam::111111111111:user/bhavin_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__delete_cloudwatch_log_group__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/bhavin_cli",
+    "event_names": [
+      "DeleteTrail"
+    ],
+    "source_ips": [
+      "192.184.242.57"
+    ],
+    "description": "A CloudTrail trail was deleted by arn:aws:iam::111111111111:user/bhavin_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__delete_cloudwatch_log_group__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/bhavin_cli",
+    "event_names": [
+      "DeleteTrail"
+    ],
+    "source_ips": [
+      "192.184.242.57"
+    ],
+    "description": "A CloudTrail trail was deleted by arn:aws:iam::111111111111:user/bhavin_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__stop_delete_cloudtrail__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/bhavin_cli",
+    "event_names": [
+      "StopLogging"
+    ],
+    "source_ips": [
+      "72.193.184.209"
+    ],
+    "description": "CloudTrail logging was stopped by arn:aws:iam::111111111111:user/bhavin_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__stop_delete_cloudtrail__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/bhavin_cli",
+    "event_names": [
+      "DeleteTrail"
+    ],
+    "source_ips": [
+      "192.184.242.57"
+    ],
+    "description": "A CloudTrail trail was deleted by arn:aws:iam::111111111111:user/bhavin_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__stop_delete_cloudtrail__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/bhavin_cli",
+    "event_names": [
+      "DeleteTrail"
+    ],
+    "source_ips": [
+      "192.184.242.57"
+    ],
+    "description": "A CloudTrail trail was deleted by arn:aws:iam::111111111111:user/bhavin_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "logging or detection disabled in attack data",
+    "dataset": "T1562.008__update_cloudtrail__aws_cloudtrail_events.json",
+    "rule": "security_controls",
+    "severity": "critical",
+    "identity": "arn:aws:iam::111111111111:user/gowthamaraj_cli",
+    "event_names": [
+      "DeleteTrail"
+    ],
+    "source_ips": [
+      "67.171.71.185"
+    ],
+    "description": "A CloudTrail trail was deleted by arn:aws:iam::111111111111:user/gowthamaraj_cli. Attackers disable logging and detection to hide their activity."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1580__aws_iam_accessdenied_discovery_events__aws_iam_accessdenied_discovery_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::731544447609:user/cloudmapper",
+    "event_names": [
+      "GetJobs",
+      "GetKeyRotationStatus",
+      "GetTriggers",
+      "ListAccounts",
+      "ListKeyPolicies"
+    ],
+    "source_ips": [
+      "34.12.134.20"
+    ],
+    "description": "arn:aws:iam::731544447609:user/cloudmapper made 37 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1580__aws_iam_accessdenied_discovery_events__aws_iam_accessdenied_discovery_events.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::731544447609:user/cloudsploit",
+    "event_names": [
+      "DescribeAutoScalingGroups",
+      "DescribeClusterParameterGroups",
+      "DescribeClusters",
+      "DescribeConfigurationRecorderStatus",
+      "DescribeConfigurationRecorders",
+      "DescribeDBClusters",
+      "DescribeDBEngineVersions",
+      "DescribeDBInstances",
+      "DescribeDBParameterGroups",
+      "DescribeDBSnapshots",
+      "DescribeEmergencyContactSettings",
+      "DescribeInstanceInformation",
+      "DescribeIpGroups",
+      "DescribeLaunchConfigurations",
+      "DescribeLoadBalancers",
+      "DescribeOrganization",
+      "DescribeParameters",
+      "DescribeReplicationInstances",
+      "DescribeRepositories",
+      "DescribeReservedNodes",
+      "DescribeSubscription",
+      "DescribeTargetGroups",
+      "DescribeTrails",
+      "DescribeTrustedAdvisorChecks",
+      "DescribeWorkspaceDirectories",
+      "DescribeWorkspaces",
+      "GetAccountPasswordPolicy",
+      "GetAccountPublicAccessBlock",
+      "GetAccountSummary",
+      "GetDataCatalogEncryptionSettings",
+      "GetEncryptionConfig",
+      "GetLifecyclePolicies",
+      "GetRestApis",
+      "GetSecurityConfigurations",
+      "GetTagKeys",
+      "ListAccounts",
+      "ListAliases",
+      "ListAssociations",
+      "ListBuckets",
+      "ListCertificates",
+      "ListClusters",
+      "ListDeliveryStreams",
+      "ListDetectors",
+      "ListDistributions2020_05_31",
+      "ListDocumentClassificationJobs",
+      "ListDomainNames",
+      "ListDomains",
+      "ListDominantLanguageDetectionJobs",
+      "ListEntitiesDetectionJobs",
+      "ListEnvironments",
+      "ListFunctions20150331",
+      "ListGroups",
+      "ListHandshakesForAccount",
+      "ListHostedZones",
+      "ListIdentities",
+      "ListKeyPhrasesDetectionJobs",
+      "ListKeys",
+      "ListNotificationChannels",
+      "ListPolicies",
+      "ListProtections",
+      "ListRoles",
+      "ListSecrets",
+      "ListSentimentDetectionJobs",
+      "ListServerCertificates",
+      "ListServers",
+      "ListStacks",
+      "ListStreams",
+      "ListTables",
+      "ListTopics",
+      "ListTopicsDetectionJobs",
+      "ListUsers",
+      "ListVirtualMFADevices",
+      "ListWebACLs",
+      "ListWorkGroups"
+    ],
+    "source_ips": [
+      "34.12.134.20"
+    ],
+    "description": "arn:aws:iam::731544447609:user/cloudsploit made 1093 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "two real addresses, no ground truth for the key",
+    "dataset": "T1580__aws_iam_excessive_list_command_usage__aws_iam_excessive_list_command_usage.json",
+    "rule": "leaked_credentials",
+    "severity": "high",
+    "identity": "arn:aws:iam::760111141337:user/jose_cli",
+    "event_names": [
+      "ListObjects"
+    ],
+    "source_ips": [
+      "167.172.217.29",
+      "54.203.102.130"
+    ],
+    "description": "Access key AKIAJ4HBMCEJQUGRUSWQ was used from 2 different source addresses within an hour, which suggests the key has been shared or stolen."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "two real addresses, no ground truth for the key",
+    "dataset": "T1580__aws_iam_excessive_list_command_usage__aws_iam_excessive_list_command_usage.json",
+    "rule": "leaked_credentials",
+    "severity": "high",
+    "identity": "arn:aws:iam::760111141337:user/test_saml",
+    "event_names": [
+      "ListRoles"
+    ],
+    "source_ips": [
+      "40.126.25.32",
+      "40.126.27.32"
+    ],
+    "description": "Access key AKIAYTOGP2RLKYX5GZBZ was used from 2 different source addresses within an hour, which suggests the key has been shared or stolen."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1580__aws_iam_excessive_list_command_usage__aws_iam_excessive_list_command_usage.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::760111141337:user/cloudmapper",
+    "event_names": [
+      "ListAccountAliases",
+      "ListAccounts",
+      "ListAnalyzers",
+      "ListBuckets",
+      "ListClusters",
+      "ListDeliveryStreams",
+      "ListDetectors",
+      "ListDistributions",
+      "ListDomainNames",
+      "ListDomains",
+      "ListFunctions20150331",
+      "ListGrants",
+      "ListHostedZones",
+      "ListHostedZonesByVPC",
+      "ListKeyPolicies",
+      "ListKeys",
+      "ListLayers20181031",
+      "ListOpenIDConnectProviders",
+      "ListResourceRecordSets",
+      "ListRules",
+      "ListSAMLProviders",
+      "ListSecrets",
+      "ListTagsForResource",
+      "ListTasks",
+      "ListTopics",
+      "ListVaults"
+    ],
+    "source_ips": [
+      "95.9.125.40",
+      "AWS Internal"
+    ],
+    "description": "arn:aws:iam::760111141337:user/cloudmapper made 377 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "simulated attacker enumerating the account",
+    "dataset": "T1580__aws_iam_excessive_list_command_usage__aws_iam_excessive_list_command_usage.json",
+    "rule": "recon",
+    "severity": "medium",
+    "identity": "arn:aws:iam::760111141337:user/cloudsploit",
+    "event_names": [
+      "ListAccounts",
+      "ListAliases",
+      "ListAssociations",
+      "ListBuckets",
+      "ListCertificates",
+      "ListClusters",
+      "ListDeliveryStreams",
+      "ListDetectors",
+      "ListDistributions2020_05_31",
+      "ListDocumentClassificationJobs",
+      "ListDomainNames",
+      "ListDomains",
+      "ListDominantLanguageDetectionJobs",
+      "ListEntitiesDetectionJobs",
+      "ListEnvironments",
+      "ListFunctions20150331",
+      "ListGroups",
+      "ListHandshakesForAccount",
+      "ListHostedZones",
+      "ListIdentities",
+      "ListKeyPhrasesDetectionJobs",
+      "ListKeys",
+      "ListNotificationChannels",
+      "ListPipelines",
+      "ListPolicies",
+      "ListProtections",
+      "ListRoles",
+      "ListSecrets",
+      "ListSentimentDetectionJobs",
+      "ListServerCertificates",
+      "ListServers",
+      "ListServiceQuotas",
+      "ListStacks",
+      "ListStreams",
+      "ListTables",
+      "ListTopics",
+      "ListTopicsDetectionJobs",
+      "ListUsers",
+      "ListVirtualMFADevices",
+      "ListWebACLs",
+      "ListWorkGroups"
+    ],
+    "source_ips": [
+      "95.9.125.40"
+    ],
+    "description": "arn:aws:iam::760111141337:user/cloudsploit made 561 enumeration calls within 30 minutes, a pattern typical of an attacker mapping the account after gaining access."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.217.70.77"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.210.39.194"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.210.39.194"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.210.39.194"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.217.70.77"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.210.39.194"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "TP",
+    "reason": "successful password-only login in attack data",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.210.39.194"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:iam::140429656527:root",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "34.210.39.194"
+    ],
+    "description": "arn:aws:iam::140429656527:root signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "only one real address; the other 'location' is AWS itself",
+    "dataset": "T1621__aws_mfa_disabled__cloudtrail.json",
+    "rule": "leaked_credentials",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "DeactivateMFADevice",
+      "DeleteVirtualMFADevice"
+    ],
+    "source_ips": [
+      "142.254.89.27",
+      "AWS Internal"
+    ],
+    "description": "Access key ASIASBMSCQHHWAIHMHUX was used from 2 different source addresses within an hour, which suggests the key has been shared or stolen."
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "dataset": "T1621__aws_mfa_disabled__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "DeleteVirtualMFADevice"
+    ],
+    "source_ips": [
+      "AWS Internal"
+    ],
+    "description": "The account root identity performed DeleteVirtualMFADevice. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "TP",
+    "reason": "root API call in attack data",
+    "dataset": "T1621__aws_mfa_disabled__cloudtrail.json",
+    "rule": "root_usage",
+    "severity": "high",
+    "identity": "arn:aws:iam::111111111111:root",
+    "event_names": [
+      "DeactivateMFADevice"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": "The account root identity performed DeactivateMFADevice. Root should be locked away and never used for day-to-day actions, so this warrants immediate review."
+  },
+  {
+    "verdict": "UNCLEAR",
+    "reason": "two real addresses, no ground truth for the key",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "leaked_credentials",
+    "severity": "high",
+    "identity": "arn:aws:sts::12345123534:assumed-role/okta_adm_role/bob@bobnet.local",
+    "event_names": [
+      "CreateSecurityGroup",
+      "RunInstances"
+    ],
+    "source_ips": [
+      "45.20.192.158",
+      "73.204.247.3"
+    ],
+    "description": "Access key AKIAASDFASDFASDFASFA was used from 2 different source addresses within an hour, which suggests the key has been shared or stolen."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "31.192.128.11"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "31.192.128.11"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/daftpunk@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "142.254.89.27"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/daftpunk@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/pbareiss@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "rule": "console_mfa",
+    "severity": "medium",
+    "identity": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/daftpunk@splunk.local",
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "45.20.192.158"
+    ],
+    "description": "arn:aws:sts::111111111111:assumed-role/okta_adm_role/daftpunk@splunk.local signed in to the console without multi-factor authentication, leaving the account one stolen password away from takeover."
+  }
+]

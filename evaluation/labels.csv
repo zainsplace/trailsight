@@ -1,0 +1,57 @@
+dataset,scope,expected_rule,adjacent_to,note
+T1021.008__aws_ec2_multiple_ssh_public_keys_uploaded__aws_ec2_multiple_ssh_public_keys_uploaded.json,out,,,EC2 Instance Connect key push
+T1078.004__aws_login_sfa__cloudtrail.json,in,console_mfa,,Console login with a single factor
+T1078__aws_create_policy_version__aws_cloudtrail_events.json,out,,privilege_escalation,Escalation by a new policy version rather than attaching AdministratorAccess
+T1078__aws_createaccesskey__aws_cloudtrail_events.json,out,,,Persistence by creating access keys
+T1078__aws_createloginprofile__aws_cloudtrail_events.json,out,,,Persistence by creating a console password
+T1078__aws_saml_access_by_provider_user_and_principal__aws_saml_access_by_provider_user_and_principal.json,excluded,,,Splunk search export rather than raw CloudTrail
+T1078__aws_saml_update_identity_provider__aws_saml_update_identity_provider.json,excluded,,,Splunk search export rather than raw CloudTrail
+T1078__aws_setdefaultpolicyversion__aws_cloudtrail_events.json,out,,privilege_escalation,Escalation by switching the default policy version
+T1078__aws_updateloginprofile__aws_cloudtrail_events.json,out,,,Account takeover by resetting a console password
+T1087.004__aws_invoke_model_access_denied__cloudtrail.json,out,,,Single denied Bedrock call
+T1098.003__aws_iam_role_created_with_external_trust__aws_iam_role_created_with_external_trust.json,out,,,Backdoor role trusted by an outside account
+T1098__aws_iam_delete_policy__aws_iam_delete_policy.json,out,,,Policy deletion
+T1098__aws_iam_failure_group_deletion__aws_iam_failure_group_deletion.json,out,,,Failed group deletion
+T1098__aws_iam_successful_group_deletion__aws_iam_successful_group_deletion.json,out,,,Group deletion
+T1110.001__aws_login_failure__aws_cloudtrail_events.json,out,,,Failed console logins
+T1110.002__aws_rds_password_reset__aws_cloudtrail_events.json,out,,,RDS master password reset
+T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json,out,,,Password spraying against the console
+T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json,out,,,Repeated failed logins for one user
+T1119__aws_exfil_datasync__cloudtrail.json,out,,,Exfiltration through DataSync
+T1185__aws_concurrent_sessions_from_different_ips__cloudtrail.json,in,leaked_credentials,,One session used from different addresses
+T1201__aws_password_policy__cloudtrail.json,out,,,Password policy discovery and weakening
+T1204.003__aws_ecr_container_upload__aws_ecr_container_upload.json,out,,,Container image pushed to ECR
+T1204__aws_updatelambdafunctioncode__aws_cloudtrail_events.json,out,,,Lambda code replaced
+T1485__aws_delete_knowledge_base__cloudtrail.json,out,,,Bedrock knowledge base deleted
+T1485__decommissioned_buckets__cloudtrail.json,out,,,Bucket deletion and takeover
+T1486__aws_kms_key__aws_cloudtrail_events.json,out,,,KMS key misuse for ransomware
+T1486__s3_file_encryption__aws_cloudtrail_events.json,out,,,S3 objects re-encrypted with an outside key
+T1490__aws_bucket_version__cloudtrail.json,out,,,Bucket versioning suspended
+T1526__aws_security_scanner__aws_security_scanner.json,in,recon,,Cloud security scanner enumerating the account
+T1530__aws_cloudwatch_logs_high_volume_retrieval__aws_cloudwatch_logs_high_volume_retrieval.json,out,,,Bulk log retrieval
+T1530__aws_exfil_high_no_getobject__cloudtrail.json,out,,,Bulk S3 download
+T1530__aws_s3_public_bucket__aws_cloudtrail_events.json,out,,,Bucket made public
+T1537__aws_ami_shared_public__aws_cloudtrail_events.json,out,,,AMI shared publicly
+T1537__aws_snapshot_exfil__aws_cloudtrail_events.json,out,,,Snapshot shared with another account
+T1552__aws_getpassworddata__aws_cloudtrail_events.json,out,,,Windows instance passwords retrieved
+T1555.006__aws_anomalous_secrets_manager_batch_retrieval__aws_anomalous_secrets_manager_batch_retrieval.json,out,,,Bulk secret retrieval
+T1556.006__aws_new_mfa_method_registered_for_user__cloudtrail.json,out,,,New MFA device registered
+T1562.007__aws_create_acl__aws_cloudtrail_events.json,out,,,Network ACL opened
+T1562.007__aws_delete_acl__aws_cloudtrail_events.json,excluded,,,Byte-identical duplicate of the create_acl file
+T1562.008__aws_bedrock_delete_guardrails__cloudtrail.json,out,,security_controls,Bedrock guardrail deleted
+T1562.008__aws_bedrock_delete_model_invocation_logging__cloudtrail.json,out,,security_controls,Bedrock invocation logging deleted
+T1562.008__aws_delete_security_services__aws_cloudtrail_events.json,in,security_controls,,GuardDuty and WAF components deleted
+T1562.008__delete_cloudwatch_log_group__aws_cloudtrail_events.json,out,,security_controls,CloudWatch log group deleted
+T1562.008__put_bucketlifecycle__aws_cloudtrail_events.json,out,,security_controls,Lifecycle rule set to expire log bucket contents
+T1562.008__stop_delete_cloudtrail__aws_cloudtrail_events.json,in,security_controls,,CloudTrail stopped and deleted
+T1562.008__update_cloudtrail__aws_cloudtrail_events.json,out,,security_controls,Trail reconfigured to weaken logging
+T1578.005__aws_authorize_security_group__aws_authorize_security_group.json,out,,,Security group opened
+T1578.005__aws_ec2_startup_script_modification__aws_ec2_startup_script_modification.json,out,,,Instance user data changed
+T1580__aws_bedrock_list_foundation_model_failures__cloudtrail.json,in,recon,,Bedrock model enumeration
+T1580__aws_iam_accessdenied_discovery_events__aws_iam_accessdenied_discovery_events.json,in,recon,,Enumeration producing access denied errors
+T1580__aws_iam_assume_role_policy_brute_force__aws_iam_assume_role_policy_brute_force.json,out,,,Role name brute force
+T1580__aws_iam_excessive_list_command_usage__aws_iam_excessive_list_command_usage.json,in,recon,,Excessive List calls
+T1586.003__aws_console_login_multiple_ips__cloudtrail.json,in,leaked_credentials,,Console logins for one identity from several addresses
+T1621__aws_failed_mfa__cloudtrail.json,out,,,Repeated failed MFA (MFA fatigue)
+T1621__aws_mfa_disabled__cloudtrail.json,out,,,MFA device removed
+suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json,out,,,Mass instance launches (cryptomining pattern)

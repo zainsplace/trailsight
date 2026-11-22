@@ -1,0 +1,583 @@
+[
+  {
+    "dataset": "T1021.008__aws_ec2_multiple_ssh_public_keys_uploaded__aws_ec2_multiple_ssh_public_keys_uploaded.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 12,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1078.004__aws_login_sfa__cloudtrail.json",
+    "scope": "in",
+    "expected_rule": "console_mfa",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 2,
+    "rules_fired": [
+      "console_mfa"
+    ],
+    "detected": true
+  },
+  {
+    "dataset": "T1078__aws_create_policy_version__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "privilege_escalation",
+    "events": 3,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1078__aws_createaccesskey__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 75,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1078__aws_createloginprofile__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 37,
+    "findings": 34,
+    "rules_fired": [
+      "console_mfa"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1078__aws_setdefaultpolicyversion__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "privilege_escalation",
+    "events": 4,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1078__aws_updateloginprofile__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1087.004__aws_invoke_model_access_denied__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 1,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1098.003__aws_iam_role_created_with_external_trust__aws_iam_role_created_with_external_trust.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1098__aws_iam_delete_policy__aws_iam_delete_policy.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 116,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1098__aws_iam_failure_group_deletion__aws_iam_failure_group_deletion.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 50,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1098__aws_iam_successful_group_deletion__aws_iam_successful_group_deletion.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 93,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1110.001__aws_login_failure__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 7,
+    "findings": 7,
+    "rules_fired": [
+      "console_mfa"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1110.002__aws_rds_password_reset__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1110.003__aws_mulitple_failed_console_login__aws_cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 31,
+    "findings": 31,
+    "rules_fired": [
+      "console_mfa"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1110.003__aws_multiple_login_fail_per_user__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 28,
+    "findings": 28,
+    "rules_fired": [
+      "console_mfa"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1119__aws_exfil_datasync__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 5,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1185__aws_concurrent_sessions_from_different_ips__cloudtrail.json",
+    "scope": "in",
+    "expected_rule": "leaked_credentials",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 2,
+    "rules_fired": [
+      "root_usage"
+    ],
+    "detected": false
+  },
+  {
+    "dataset": "T1201__aws_password_policy__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 7,
+    "findings": 5,
+    "rules_fired": [
+      "root_usage"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1204.003__aws_ecr_container_upload__aws_ecr_container_upload.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1204__aws_updatelambdafunctioncode__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1485__aws_delete_knowledge_base__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 1,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1485__decommissioned_buckets__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 8,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1486__aws_kms_key__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 674,
+    "findings": 3,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1486__s3_file_encryption__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1490__aws_bucket_version__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1526__aws_security_scanner__aws_security_scanner.json",
+    "scope": "in",
+    "expected_rule": "recon",
+    "adjacent_to": "",
+    "events": 1071,
+    "findings": 1,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": true
+  },
+  {
+    "dataset": "T1530__aws_cloudwatch_logs_high_volume_retrieval__aws_cloudwatch_logs_high_volume_retrieval.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 650,
+    "findings": 1,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 100,
+    "findings": 1,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1530__aws_s3_public_bucket__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 9,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1537__aws_ami_shared_public__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1537__aws_snapshot_exfil__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 9,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1552__aws_getpassworddata__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 60,
+    "findings": 2,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1555.006__aws_anomalous_secrets_manager_batch_retrieval__aws_anomalous_secrets_manager_batch_retrieval.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 13,
+    "findings": 1,
+    "rules_fired": [
+      "leaked_credentials"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1556.006__aws_new_mfa_method_registered_for_user__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 2,
+    "rules_fired": [
+      "root_usage"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1562.007__aws_create_acl__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 13274,
+    "findings": 8,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1562.008__aws_bedrock_delete_guardrails__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "security_controls",
+    "events": 1,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1562.008__aws_bedrock_delete_model_invocation_logging__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "security_controls",
+    "events": 1,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1562.008__aws_delete_security_services__aws_cloudtrail_events.json",
+    "scope": "in",
+    "expected_rule": "security_controls",
+    "adjacent_to": "",
+    "events": 8,
+    "findings": 2,
+    "rules_fired": [
+      "security_controls"
+    ],
+    "detected": true
+  },
+  {
+    "dataset": "T1562.008__delete_cloudwatch_log_group__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "security_controls",
+    "events": 4,
+    "findings": 3,
+    "rules_fired": [
+      "security_controls"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1562.008__put_bucketlifecycle__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "security_controls",
+    "events": 5,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1562.008__stop_delete_cloudtrail__aws_cloudtrail_events.json",
+    "scope": "in",
+    "expected_rule": "security_controls",
+    "adjacent_to": "",
+    "events": 3,
+    "findings": 3,
+    "rules_fired": [
+      "security_controls"
+    ],
+    "detected": true
+  },
+  {
+    "dataset": "T1562.008__update_cloudtrail__aws_cloudtrail_events.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "security_controls",
+    "events": 7,
+    "findings": 1,
+    "rules_fired": [
+      "security_controls"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "T1578.005__aws_authorize_security_group__aws_authorize_security_group.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 10,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1578.005__aws_ec2_startup_script_modification__aws_ec2_startup_script_modification.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1580__aws_bedrock_list_foundation_model_failures__cloudtrail.json",
+    "scope": "in",
+    "expected_rule": "recon",
+    "adjacent_to": "",
+    "events": 12,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": false
+  },
+  {
+    "dataset": "T1580__aws_iam_accessdenied_discovery_events__aws_iam_accessdenied_discovery_events.json",
+    "scope": "in",
+    "expected_rule": "recon",
+    "adjacent_to": "",
+    "events": 1150,
+    "findings": 2,
+    "rules_fired": [
+      "recon"
+    ],
+    "detected": true
+  },
+  {
+    "dataset": "T1580__aws_iam_assume_role_policy_brute_force__aws_iam_assume_role_policy_brute_force.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 10,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1580__aws_iam_excessive_list_command_usage__aws_iam_excessive_list_command_usage.json",
+    "scope": "in",
+    "expected_rule": "recon",
+    "adjacent_to": "",
+    "events": 4196,
+    "findings": 4,
+    "rules_fired": [
+      "leaked_credentials",
+      "recon"
+    ],
+    "detected": true
+  },
+  {
+    "dataset": "T1586.003__aws_console_login_multiple_ips__cloudtrail.json",
+    "scope": "in",
+    "expected_rule": "leaked_credentials",
+    "adjacent_to": "",
+    "events": 8,
+    "findings": 8,
+    "rules_fired": [
+      "console_mfa"
+    ],
+    "detected": false
+  },
+  {
+    "dataset": "T1621__aws_failed_mfa__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 14,
+    "findings": 0,
+    "rules_fired": [],
+    "detected": null
+  },
+  {
+    "dataset": "T1621__aws_mfa_disabled__cloudtrail.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 2,
+    "findings": 3,
+    "rules_fired": [
+      "leaked_credentials",
+      "root_usage"
+    ],
+    "detected": null
+  },
+  {
+    "dataset": "suspicious_behaviour__abnormally_high_cloud_instances_launched__cloudtrail_behavioural_detections.json",
+    "scope": "out",
+    "expected_rule": "",
+    "adjacent_to": "",
+    "events": 8100,
+    "findings": 63,
+    "rules_fired": [
+      "console_mfa",
+      "leaked_credentials"
+    ],
+    "detected": null
+  }
+]

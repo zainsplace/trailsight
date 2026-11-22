@@ -39,6 +39,27 @@ handing their logs to a vendor.
 - Root account activity
 - Console logins without MFA
 
+## How well it works
+
+Tested on CloudTrail I did not write: 53 labelled attack samples from
+[Splunk attack_data](https://github.com/splunk/attack_data), and 1.9 million
+real events from the public [flaws.cloud](https://summitroute.com/blog/2020/10/09/public_dataset_of_cloudtrail_logs_from_flaws_cloud/)
+challenges. Labels were fixed before anything ran, and no rule was tuned on
+this data.
+
+| Measure | Result |
+|---|---|
+| Attacks the rules claim to cover, caught by the intended rule | 6 of 9 |
+| Findings on attack samples that were correct | 38 of 206 (18%) |
+| flaws.cloud findings: attacker / correct but authorised / wrong | 56 / 8,328 / 2,935 |
+| Rules over 1.9 million events | 2.3 s (856,000 events a second) |
+
+The disabled-logging and root rules are accurate. The MFA rule fires on failed
+logins and federated sessions, the leaked credentials rule misses attacks that
+rotate temporary keys and fires on Lambda, and root activity is reported once
+per API call, which buries the real attacks. The full method, every miss and
+the fixes to test are in [docs/evaluation.md](docs/evaluation.md).
+
 ## Quick start
 
 No terminal needed. Install [Python](https://www.python.org/downloads/) if you

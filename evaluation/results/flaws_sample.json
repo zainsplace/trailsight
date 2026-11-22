@@ -1,0 +1,981 @@
+[
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "rule": "console_mfa",
+    "identity": "",
+    "time": "2020-01-18T07:32:07+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "8.101.151.38"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.3",
+    "invoked_by": null,
+    "login_result": "Failure"
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "rule": "console_mfa",
+    "identity": "",
+    "time": "2020-01-15T10:08:24+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "222.230.154.255"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/967662 Firefox/68.0",
+    "invoked_by": null,
+    "login_result": "Failure"
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "rule": "console_mfa",
+    "identity": "",
+    "time": "2018-02-26T18:47:44+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "12.80.110.252"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/604.5.6 (KHTML, like Gecko) Version/11.0.3 Safari/604.5.6",
+    "invoked_by": null,
+    "login_result": "Failure"
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "rule": "console_mfa",
+    "identity": "arn:aws:sts::811596193553:assumed-role/flaws/i-aa2d3b42e5c6e801a",
+    "time": "2019-09-18T04:27:58+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "3.10.240.206"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.3",
+    "invoked_by": null,
+    "login_result": "Success"
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner signing in without MFA",
+    "rule": "console_mfa",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2018-03-20T00:21:22+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "224.223.84.255"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.3",
+    "invoked_by": null,
+    "login_result": "Success"
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "rule": "console_mfa",
+    "identity": "",
+    "time": "2018-03-17T17:31:20+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "104.255.115.244"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
+    "invoked_by": null,
+    "login_result": "Failure"
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner signing in without MFA",
+    "rule": "console_mfa",
+    "identity": "arn:aws:iam::811596193553:user/piper",
+    "time": "2017-05-16T23:05:01+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+    "invoked_by": null,
+    "login_result": "Success"
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "rule": "console_mfa",
+    "identity": "arn:aws:sts::811596193553:assumed-role/flaws/i-aa2d3b42e5c6e801a",
+    "time": "2019-09-18T04:40:03+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "3.10.240.206"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:68.0) Gecko/967662 Firefox/68.0",
+    "invoked_by": null,
+    "login_result": "Success"
+  },
+  {
+    "verdict": "FP",
+    "reason": "federated or role session; MFA happens at the identity provider and is not recorded",
+    "rule": "console_mfa",
+    "identity": "arn:aws:sts::811596193553:assumed-role/flaws/i-aa2d3b42e5c6e801a",
+    "time": "2019-09-18T04:34:22+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "3.10.240.206"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.3",
+    "invoked_by": null,
+    "login_result": "Success"
+  },
+  {
+    "verdict": "FP",
+    "reason": "login failed, so nobody signed in",
+    "rule": "console_mfa",
+    "identity": "",
+    "time": "2018-02-26T18:46:19+00:00",
+    "event_count": 1,
+    "event_names": [
+      "ConsoleLogin"
+    ],
+    "source_ips": [
+      "12.80.110.252"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/604.5.6 (KHTML, like Gecko) Version/11.0.3 Safari/604.5.6",
+    "invoked_by": null,
+    "login_result": "Failure"
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2017-02-24T01:55:49+00:00",
+    "event_count": 10,
+    "event_names": [
+      "DeleteBucket",
+      "GetBucketLocation",
+      "GetBucketNotification",
+      "GetBucketReplication",
+      "ListFunctions202224",
+      "ListTopics"
+    ],
+    "source_ips": [
+      "2.75.1.0",
+      "255.253.125.115",
+      "AWS Internal"
+    ],
+    "error_codes": [
+      "",
+      "ReplicationConfigurationNotFoundError"
+    ],
+    "user_agent": "aws-internal/3",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "challenge credentials leaked by design, used from several places",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/flaws/i-aa2d3b42e5c6e801a",
+    "time": "2018-02-24T12:32:02+00:00",
+    "event_count": 6,
+    "event_names": [
+      "ListBuckets"
+    ],
+    "source_ips": [
+      "191.253.250.239",
+      "87.178.2.60"
+    ],
+    "error_codes": [
+      "AccessDenied"
+    ],
+    "user_agent": "[aws-cli/1.14.38 Python/3.6.4 Linux/4.12.14-1-MANJARO botocore/1.8.42]",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2019-08-15T20:47:40+00:00",
+    "event_count": 4,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "229.215.211.94",
+      "32.113.86.251"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2019-10-11T02:04:34+00:00",
+    "event_count": 2,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "225.93.12.7",
+      "86.1.116.250"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2019-10-09T14:21:52+00:00",
+    "event_count": 2,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "247.119.218.250",
+      "50.28.255.91"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2018-09-10T11:31:19+00:00",
+    "event_count": 2,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "193.146.250.175",
+      "202.15.145.64"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2020-03-08T06:11:20+00:00",
+    "event_count": 2,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "206.247.5.204",
+      "242.132.236.255"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2019-06-14T17:56:51+00:00",
+    "event_count": 4,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "213.69.252.95",
+      "254.29.172.32"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2019-01-22T10:27:01+00:00",
+    "event_count": 2,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "212.6.180.20",
+      "239.161.119.8"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "Lambda runs invocations on different hosts, so its key changes address",
+    "rule": "leaked_credentials",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Level6/Level6",
+    "time": "2019-07-18T08:14:23+00:00",
+    "event_count": 4,
+    "event_names": [
+      "CreateLogStream"
+    ],
+    "source_ips": [
+      "229.131.251.73",
+      "28.8.172.254"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "awslambda-worker",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner",
+    "rule": "privilege_escalation",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2017-05-16T03:03:56+00:00",
+    "event_count": 1,
+    "event_names": [
+      "AttachUserPolicy"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "console.amazonaws.com",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "the owner's own audit tool or console session",
+    "rule": "recon",
+    "identity": "arn:aws:sts::811596193553:assumed-role/SummitRouteAudit/1229551211742381686",
+    "time": "2018-08-06T16:08:23+00:00",
+    "event_count": 30,
+    "event_names": [
+      "DescribeRegions",
+      "GetLoadBalancers",
+      "GetRestApis",
+      "GetUser"
+    ],
+    "source_ips": [
+      "250.251.253.3"
+    ],
+    "error_codes": [
+      "",
+      "NoSuchEntityException"
+    ],
+    "user_agent": "Boto3/1.5.32 Python/3.6.4 Darwin/17.7.0 Botocore/1.8.50",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "challenge player enumerating the account",
+    "rule": "recon",
+    "identity": "",
+    "time": "2020-08-15T12:02:34+00:00",
+    "event_count": 112,
+    "event_names": [
+      "GetBucketAcl",
+      "GetBucketCors",
+      "GetBucketLocation",
+      "GetBucketLogging",
+      "GetBucketPolicy",
+      "GetBucketReplication",
+      "GetBucketWebsite"
+    ],
+    "source_ips": [
+      "220.251.144.9"
+    ],
+    "error_codes": [
+      "AccessDenied"
+    ],
+    "user_agent": "[Botocore/1.12.253 Python/3.7.6 Linux/5.4.0-kali4-amd64]",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "challenge player enumerating the account",
+    "rule": "recon",
+    "identity": "arn:aws:sts::811596193553:assumed-role/aws:ec2-instance/i-aa2d3b42e5c6e801a",
+    "time": "2019-05-29T15:55:39+00:00",
+    "event_count": 20,
+    "event_names": [
+      "DescribeDBInstances",
+      "DescribeDBSecurityGroups",
+      "DescribeDBSnapshots",
+      "DescribeImages",
+      "DescribeInstanceStatus",
+      "DescribeInstances",
+      "GetAccountSummary",
+      "GetCallerIdentity"
+    ],
+    "source_ips": [
+      "4.239.255.179"
+    ],
+    "error_codes": [
+      "",
+      "AccessDenied",
+      "Client.UnauthorizedOperation"
+    ],
+    "user_agent": "aws-cli/1.16.167 Python/3.6.7 Linux/4.15.0-50-generic botocore/1.12.157",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "the owner's own audit tool or console session",
+    "rule": "recon",
+    "identity": "arn:aws:sts::811596193553:assumed-role/SecurityMonkey/cloudaux",
+    "time": "2017-05-26T22:27:07+00:00",
+    "event_count": 98,
+    "event_names": [
+      "DescribeLoadBalancers",
+      "GetBucketLocation",
+      "GetBucketReplication",
+      "GetLoginProfile",
+      "GetRolePolicy",
+      "ListAccessKeys",
+      "ListAttachedRolePolicies",
+      "ListAttachedUserPolicies"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      "",
+      "AccessDenied",
+      "NoSuchEntityException"
+    ],
+    "user_agent": "Boto3/1.4.4 Python/2.7.12 Linux/4.4.0-78-generic Botocore/1.5.56",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "the owner's own audit tool or console session",
+    "rule": "recon",
+    "identity": "arn:aws:sts::811596193553:assumed-role/SecurityMonkey/secmonkey",
+    "time": "2017-05-26T22:26:49+00:00",
+    "event_count": 1314,
+    "event_names": [
+      "DescribeAddresses",
+      "DescribeClusters",
+      "DescribeConfigRules",
+      "DescribeConfigurationRecorders",
+      "DescribeConnections",
+      "DescribeDBClusterSnapshots",
+      "DescribeDBClusters",
+      "DescribeDBInstances"
+    ],
+    "source_ips": [
+      "255.253.125.115",
+      "ec2-frontend-api.amazonaws.com"
+    ],
+    "error_codes": [
+      "",
+      "AccessDenied"
+    ],
+    "user_agent": "Boto3/1.4.4 Python/2.7.12 Linux/4.4.0-78-generic Botocore/1.5.56",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "challenge player enumerating the account",
+    "rule": "recon",
+    "identity": "arn:aws:sts::811596193553:assumed-role/flaws/i-aa2d3b42e5c6e801a",
+    "time": "2017-02-28T18:24:14+00:00",
+    "event_count": 19,
+    "event_names": [
+      "DescribeDBInstances",
+      "DescribeDBSecurityGroups",
+      "DescribeDBSnapshots",
+      "DescribeImages",
+      "DescribeInstanceStatus",
+      "DescribeInstances",
+      "GetAccountSummary",
+      "ListUsers"
+    ],
+    "source_ips": [
+      "246.253.217.255",
+      "255.238.24.236"
+    ],
+    "error_codes": [
+      "AccessDenied",
+      "Client.UnauthorizedOperation"
+    ],
+    "user_agent": "Boto/2.10.0 (darwin)",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "the owner's own audit tool or console session",
+    "rule": "recon",
+    "identity": "arn:aws:iam::811596193553:user/piper",
+    "time": "2017-05-16T23:05:19+00:00",
+    "event_count": 46,
+    "event_names": [
+      "GetAccountPasswordPolicy",
+      "GetAccountSummary",
+      "GetBucketAcl",
+      "GetBucketCors",
+      "GetBucketPolicy",
+      "GetBucketVersioning",
+      "GetUser",
+      "ListAccessKeys"
+    ],
+    "source_ips": [
+      "255.253.125.115",
+      "AWS Internal"
+    ],
+    "error_codes": [
+      "",
+      "NoSuchCORSConfiguration",
+      "NoSuchEntityException"
+    ],
+    "user_agent": "signin.amazonaws.com",
+    "invoked_by": "signin.amazonaws.com",
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "challenge player enumerating the account",
+    "rule": "recon",
+    "identity": "arn:aws:iam::811596193553:user/Level5",
+    "time": "2017-02-20T01:31:25+00:00",
+    "event_count": 21,
+    "event_names": [
+      "GetAccountSummary",
+      "GetPolicy",
+      "GetStages",
+      "GetUser",
+      "GetUserPolicy",
+      "ListAccessKeys",
+      "ListAttachedUserPolicies",
+      "ListPolicies"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      "",
+      "NoSuchEntityException"
+    ],
+    "user_agent": "aws-cli/1.11.47 Python/2.7.3 Linux/3.2.0-4-amd64 botocore/1.5.10",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "the owner's own audit tool or console session",
+    "rule": "recon",
+    "identity": "arn:aws:sts::811596193553:assumed-role/Cloudsploit/cloudsploit_scan",
+    "time": "2017-05-26T18:27:02+00:00",
+    "event_count": 566,
+    "event_names": [
+      "DescribeAccountAttributes",
+      "DescribeAddresses",
+      "DescribeConfigurationRecorderStatus",
+      "DescribeConfigurationRecorders",
+      "DescribeDBClusters",
+      "DescribeDBInstances",
+      "DescribeFlowLogs",
+      "DescribeImages"
+    ],
+    "source_ips": [
+      "252.138.62.6",
+      "ec2-frontend-api.amazonaws.com"
+    ],
+    "error_codes": [
+      "",
+      "NoSuchEntityException"
+    ],
+    "user_agent": "aws-sdk-nodejs/2.7.21 linux/v4.3.2 exec-env/AWS_Lambda_nodejs4.3",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "challenge player enumerating the account",
+    "rule": "recon",
+    "identity": "arn:aws:iam::811596193553:user/Level6",
+    "time": "2017-02-28T07:49:19+00:00",
+    "event_count": 46,
+    "event_names": [
+      "DescribeInstances",
+      "GetAccountSettings08306",
+      "GetFunction202224v2",
+      "GetPolicy202224v2",
+      "GetRole",
+      "GetSessionToken",
+      "GetUser",
+      "ListAccessKeys"
+    ],
+    "source_ips": [
+      "137.53.124.9"
+    ],
+    "error_codes": [
+      "",
+      "AccessDenied",
+      "NoSuchEntityException"
+    ],
+    "user_agent": "[aws-cli/1.11.56 Python/2.7.10 Darwin/16.4.0 botocore/1.5.19]",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner using root",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2018-08-05T17:09:05+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DescribeStacks"
+    ],
+    "source_ips": [
+      "250.251.253.3"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "console.amazonaws.com",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner using root",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2017-02-28T01:35:13+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DescribeSnapshots"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "console.ec2.amazonaws.com",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2018-10-16T20:30:28+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DescribeAccountAttributes"
+    ],
+    "source_ips": [
+      "support.amazonaws.com"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "support.amazonaws.com",
+    "invoked_by": "support.amazonaws.com",
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2017-05-29T22:40:44+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DescribeAccountLimits"
+    ],
+    "source_ips": [
+      "support.amazonaws.com"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "support.amazonaws.com",
+    "invoked_by": "support.amazonaws.com",
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2018-10-16T20:30:20+00:00",
+    "event_count": 1,
+    "event_names": [
+      "GetBucketLocation"
+    ],
+    "source_ips": [
+      "support.amazonaws.com"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "support.amazonaws.com",
+    "invoked_by": "support.amazonaws.com",
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner using root",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2017-02-20T01:48:18+00:00",
+    "event_count": 1,
+    "event_names": [
+      "GetPolicyVersion"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "console.amazonaws.com",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2019-08-23T15:55:48+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DescribeConfigurationRecorders"
+    ],
+    "source_ips": [
+      "228.139.46.252"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "AWSCloudTrail, aws-internal/3 aws-sdk-java/1.11.590 Linux/4.9.137-0.1.ac.218.74.329.metal1.x86_64 OpenJDK_64-Bit_Server_",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2018-09-30T23:48:45+00:00",
+    "event_count": 1,
+    "event_names": [
+      "GetBucketLocation"
+    ],
+    "source_ips": [
+      "support.amazonaws.com"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "support.amazonaws.com",
+    "invoked_by": "support.amazonaws.com",
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner using root",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2017-02-26T23:10:52+00:00",
+    "event_count": 1,
+    "event_names": [
+      "GetAccountSummary"
+    ],
+    "source_ips": [
+      "255.253.125.115"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "console.amazonaws.com",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "FP",
+    "reason": "AWS made the call on the account's behalf",
+    "rule": "root_usage",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2018-10-16T20:30:20+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DescribeAccountAttributes"
+    ],
+    "source_ips": [
+      "support.amazonaws.com"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "support.amazonaws.com",
+    "invoked_by": "support.amazonaws.com",
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "attempt was denied, but the finding text says it happened",
+    "rule": "security_controls",
+    "identity": "arn:aws:iam::811596193553:user/Level6",
+    "time": "2019-06-07T11:04:25+00:00",
+    "event_count": 1,
+    "event_names": [
+      "StopLogging"
+    ],
+    "source_ips": [
+      "2.251.2.5"
+    ],
+    "error_codes": [
+      "AccessDenied"
+    ],
+    "user_agent": "aws-cli/1.16.168 Python/3.7.3rc1 Linux/4.19.0-kali3-amd64 botocore/1.12.158",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "TP",
+    "reason": "attempt was denied, but the finding text says it happened",
+    "rule": "security_controls",
+    "identity": "arn:aws:iam::811596193553:user/Level6",
+    "time": "2019-06-07T11:04:25+00:00",
+    "event_count": 1,
+    "event_names": [
+      "StopLogging"
+    ],
+    "source_ips": [
+      "2.251.2.5"
+    ],
+    "error_codes": [
+      "AccessDenied"
+    ],
+    "user_agent": "aws-cli/1.16.168 Python/3.7.3rc1 Linux/4.19.0-kali3-amd64 botocore/1.12.158",
+    "invoked_by": null,
+    "login_result": null
+  },
+  {
+    "verdict": "BTP",
+    "reason": "account owner",
+    "rule": "security_controls",
+    "identity": "arn:aws:iam::811596193553:root",
+    "time": "2019-08-23T15:48:50+00:00",
+    "event_count": 1,
+    "event_names": [
+      "DeleteTrail"
+    ],
+    "source_ips": [
+      "228.139.46.252"
+    ],
+    "error_codes": [
+      ""
+    ],
+    "user_agent": "console.amazonaws.com",
+    "invoked_by": null,
+    "login_result": null
+  }
+]
