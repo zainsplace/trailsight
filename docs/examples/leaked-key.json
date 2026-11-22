@@ -1,0 +1,21 @@
+{"Records": [
+  {"eventTime": "2026-01-02T02:00:00Z", "eventName": "GetObject",
+   "eventSource": "s3.amazonaws.com", "awsRegion": "eu-west-1",
+   "sourceIPAddress": "198.51.100.20",
+   "userIdentity": {"type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/alice",
+                    "accessKeyId": "AKIAEXAMPLELEAK"},
+   "requestParameters": {"bucketName": "invoices", "key": "2026/01.pdf"}},
+  {"eventTime": "2026-01-02T02:03:00Z", "eventName": "GetObject",
+   "eventSource": "s3.amazonaws.com", "awsRegion": "eu-west-1",
+   "sourceIPAddress": "203.0.113.9",
+   "userIdentity": {"type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/alice",
+                    "accessKeyId": "AKIAEXAMPLELEAK"},
+   "requestParameters": {"bucketName": "invoices", "key": "2026/02.pdf"}},
+  {"eventTime": "2026-01-02T02:10:00Z", "eventName": "AttachUserPolicy",
+   "eventSource": "iam.amazonaws.com", "awsRegion": "us-east-1",
+   "sourceIPAddress": "203.0.113.9",
+   "userIdentity": {"type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/alice",
+                    "accessKeyId": "AKIAEXAMPLELEAK"},
+   "requestParameters": {"userName": "alice",
+                         "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}}
+]}

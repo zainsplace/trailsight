@@ -32,14 +32,59 @@ handing their logs to a vendor.
 
 ## What it detects
 
-- Leaked credentials: an access key, the root account or a console password
-  used from multiple locations in a short time
-- Privilege escalation: an administrator policy attached to a principal
-- Reconnaissance: bursts of enumeration calls
-- Disabled security controls: CloudTrail or GuardDuty turned off
-- Root account activity, one finding per day
-- Successful console logins without MFA by IAM users or root (federated
-  sign-ins are checked by your identity provider, not CloudTrail)
+| Rule | Fires on | ATT&CK | Labelled attacks caught |
+|---|---|---|---|
+| leaked_credentials | An access key, the root account or a console password used from two or more addresses within an hour | T1078.004 | 2 of 2 |
+| privilege_escalation | `AdministratorAccess` attached to a user, role or group | T1098.003 | none in the test set |
+| recon | 15 or more `Describe`, `List` or `Get` calls by one identity within 30 minutes | T1580, T1526 | 3 of 4 |
+| security_controls | `StopLogging`, `DeleteTrail`, `DeleteDetector`, GuardDuty disassociation | T1562.008 | 2 of 2 |
+| root_usage | Any root API call, grouped into one finding per day | T1078.004 | none in the test set |
+| console_mfa | A successful console login without MFA by an IAM user or root | (weak authentication) | 1 of 1 |
+
+The last column comes from the [evaluation](docs/evaluation.md) on Splunk's
+public attack samples.
+
+## What it does not detect
+
+Trailsight covers six patterns, not AWS attacks in general. In the evaluation
+it missed, by design or by gap:
+
+- Escalation without `AdministratorAccess`: new policy versions, custom admin
+  policies, `iam:PassRole` abuse
+- Weakening logs without turning them off: `UpdateTrail`, deleting log
+  groups, expiring the log bucket
+- Persistence: new access keys, new console passwords, backdoor roles trusted
+  by another account
+- Data theft: public buckets, shared snapshots and AMIs, bulk downloads, bulk
+  secret reads (bulk reads sometimes trip the recon rule, under the wrong name)
+- Password spraying and MFA fatigue (failed logins are ignored)
+- MFA for federated sign-ins, which happens at the identity provider
+- Enumeration below 15 calls in 30 minutes
+- Anything that needs a baseline of normal behaviour, which is on the roadmap
+
+## Example
+
+Input, three CloudTrail records ([docs/examples/leaked-key.json](docs/examples/leaked-key.json)):
+alice's key downloads a file from one address, then from a second address
+three minutes later, then grants itself administrator access.
+
+    trailsight scan --input docs/examples/leaked-key.json
+
+Output:
+
+    [CRITICAL] Administrator policy attached
+      rule: privilege_escalation
+      identity: arn:aws:iam::111122223333:user/alice
+      arn:aws:iam::111122223333:user/alice attached arn:aws:iam::aws:policy/AdministratorAccess through AttachUserPolicy. Granting administrator access is a common privilege escalation step after a compromise.
+
+    [HIGH] Credentials used from multiple locations
+      rule: leaked_credentials
+      identity: arn:aws:iam::111122223333:user/alice
+      Access key AKIAEXAMPLELEAK was used from 2 different source addresses within an hour, which suggests the key has been shared or stolen.
+
+    2 findings: 1 critical, 1 high
+
+The exit status is 1 because something was found.
 
 ## How well it works
 
@@ -149,6 +194,19 @@ one finding. If Ollama is not running, findings are still reported in full and
 only the explanation is missing.
 
 ## Design
+
+```mermaid
+flowchart LR
+    A[CloudTrail files<br>.json / .json.gz] --> B[Loader<br>normalises events]
+    B --> C[Rule engine<br>six deterministic rules]
+    C --> D[Findings<br>with evidence]
+    D --> E[CLI / JSON / dashboard]
+    D -. optional .-> F[Explanation layer<br>local model via Ollama]
+    F -.-> E
+```
+
+The model only ever sees findings the rules have already made, so switching it
+off changes nothing about what is detected.
 
 The detection pipeline and its principles are documented in
 [docs/design.md](docs/design.md). In short: deterministic rules and, later,
